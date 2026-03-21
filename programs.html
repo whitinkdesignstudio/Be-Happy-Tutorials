@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Programs – Be Happy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito:wght@300;400;600;700;800;900&display=swap');
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --yellow: #F5C518;
+      --yellow-dark: #E6A800;
+      --yellow-light: #FFD95A;
+      --yellow-pale: #FFFBEA;
+      --green: #2D7A2D;
+      --green-dark: #1F5C1F;
+      --green-light: #4CAF50;
+      --white: #ffffff;
+      --bg-section: #FFFBEA;
+      --text-dark: #1e2e1e;
+      --card-radius: 16px;
+      --black: #1e2e1e;
+      --black-soft: #2a3a2a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text-dark);
+      background: #fff;
+      overflow-x: hidden;
+      max-width: 100vw
+    }
+
+    /* NAVBAR */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: #fff;
+      border-bottom: 3px solid var(--yellow);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .08)
+    }
+
+    .top-nav-inner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 40px;
+      height: 68px
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 50%
+    }
+
+    .nav-logo-text {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1
+    }
+
+    .nav-logo-text span {
+      color: var(--green-dark)
+    }
+
+    .nav-search {
+      flex: 1;
+      max-width: 480px;
+      position: relative
+    }
+
+    .nav-search input {
+      width: 100%;
+      padding: 10px 16px 10px 42px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 24px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .92rem;
+      color: #333;
+      background: #f8f8f8;
+      outline: none;
+      transition: border-color .2s, background .2s
+    }
+
+    .nav-search input:focus {
+      border-color: var(--yellow);
+      background: #fff
+    }
+
+    .nav-search .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      pointer-events: none;
+      font-size: 1rem
+    }
+
+    .nav-location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 1.5px solid #e0e0e0;
+      background: #f8f8f8;
+      transition: border-color .2s;
+      flex-shrink: 0;
+      white-space: nowrap;
+      font-size: .88rem;
+      font-weight: 600;
+      color: #444;
+      user-select: none;
+      margin-left: 40rem;
+    }
+
+    .nav-location:hover {
+      border-color: var(--yellow)
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+      flex-shrink: 0
+    }
+
+    .btn-login {
+      background: transparent;
+      color: var(--green-dark);
+      border: 2px solid var(--green-dark);
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      text-decoration: none;
+      white-space: nowrap
+    }
+
+    .btn-login:hover {
+      background: var(--green-dark);
+      color: #fff
+    }
+
+    .btn-signup {
+      background: var(--yellow);
+      color: var(--black);
+      border: none;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s;
+      text-decoration: none;
+      white-space: nowrap
+    }
+
+    .btn-signup:hover {
+      background: var(--yellow-dark)
+    }
+
+    .nav-hamburger {
+      background: none;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      padding: 8px 10px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex-shrink: 0;
+      transition: border-color .2s
+    }
+
+    .nav-hamburger:hover {
+      border-color: var(--yellow)
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #444;
+      border-radius: 2px
+    }
+
+    .account-drawer {
+      position: fixed;
+      top: 0;
+      right: -340px;
+      width: 320px;
+      height: 100vh;
+      background: #fff;
+      z-index: 999;
+      box-shadow: -4px 0 24px rgba(0, 0, 0, .15);
+      transition: right .3s ease;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto
+    }
+
+    .account-drawer.open {
+      right: 0
+    }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 28, 18, .40);
+      z-index: 998;
+      display: none
+    }
+
+    .drawer-overlay.open {
+      display: block
+    }
+
+    .drawer-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid #f0f0f0
+    }
+
+    .drawer-header h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 16px
+    }
+
+    .drawer-promo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--yellow-pale);
+      border: 1.5px solid var(--yellow);
+      border-radius: 12px;
+      padding: 14px
+    }
+
+    .drawer-promo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0
+    }
+
+    .drawer-promo-text {
+      flex: 1;
+      font-size: .83rem;
+      color: var(--green-dark);
+      font-weight: 600;
+      line-height: 1.4
+    }
+
+    .btn-drawer-auth {
+      background: transparent;
+      color: var(--green-dark);
+      border: 2px solid var(--green-dark);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      flex-shrink: 0
+    }
+
+    .drawer-menu {
+      flex: 1;
+      padding: 8px 0
+    }
+
+    .drawer-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      border-bottom: 1px solid #f0f5f0;
+      cursor: pointer;
+      transition: background .15s;
+      text-decoration: none;
+      color: var(--text-dark)
+    }
+
+    .drawer-item:hover {
+      background: #fafafa
+    }
+
+    .drawer-item-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0
+    }
+
+    .drawer-item-title {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--text-dark)
+    }
+
+    .drawer-item-sub {
+      font-size: .78rem;
+      color: #999;
+      margin-top: 2px
+    }
+
+    .drawer-item-arrow {
+      margin-left: auto;
+      color: #ccc;
+      font-size: .85rem
+    }
+
+    .drawer-item.locked .drawer-item-title,
+    .drawer-item.locked .drawer-item-sub {
+      color: #bbb
+    }
+
+    .drawer-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #999;
+      padding: 4px 8px;
+      border-radius: 6px
+    }
+
+    .drawer-close:hover {
+      color: var(--text-dark)
+    }
+
+    .sub-nav {
+      background: #fff;
+      border-bottom: 2px solid #f0f0f0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none
+    }
+
+    .sub-nav::-webkit-scrollbar {
+      display: none
+    }
+
+    .sub-nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      flex-wrap: nowrap;
+      padding: 0 20px;
+      min-width: max-content
+    }
+
+    .sub-nav-links a {
+      text-decoration: none;
+      color: #555;
+      font-size: .88rem;
+      font-weight: 600;
+      padding: 13px 14px;
+      display: block;
+      border-bottom: 3px solid transparent;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+      flex-shrink: 0
+    }
+
+    .sub-nav-links a:hover {
+      color: var(--green-dark)
+    }
+
+    .sub-nav-links a.active {
+      color: var(--green-dark);
+      border-bottom-color: var(--yellow)
+    }
+
+    @media(max-width:900px) {
+      .top-nav-inner {
+        padding: 0 16px;
+        gap: 10px
+      }
+
+      .nav-search {
+        max-width: none;
+        flex: 1
+      }
+
+      .nav-location {
+        display: none
+      }
+
+      .btn-login,
+      .btn-signup {
+        display: none
+      }
+
+      .sub-nav-links {
+        padding: 0 12px
+      }
+
+      .sub-nav-links a {
+        padding: 12px 11px;
+        font-size: .84rem
+      }
+    }
+
+    @media(max-width:480px) {
+      .sub-nav-links a {
+        padding: 11px 10px;
+        font-size: .8rem
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1a2e1a;
+      color: #ccc;
+      padding: 60px clamp(16px, 5vw, 80px) 30px
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px
+    }
+
+    .footer-brand p {
+      font-size: .9rem;
+      line-height: 1.7;
+      color: #aaa;
+      max-width: 260px;
+      margin-top: 12px
+    }
+
+    .footer-logo {
+
+      color: #fff;
+      line-height: 1;
+      display: inline-block;
+      text-decoration: none
+    }
+
+    .footer-logo img {
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+    }
+
+    .footer-col h5 {
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .footer-col ul a {
+      color: #888;
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s
+    }
+
+    .footer-col ul a:hover {
+      color: var(--yellow-light)
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #2a4a2a;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .footer-bottom p {
+      font-size: .85rem;
+      color: #888
+    }
+
+    @media(max-width:900px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px
+      }
+
+      footer {
+        padding: 48px clamp(16px, 4vw, 40px) 24px
+      }
+    }
+
+    @media(max-width:480px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px
+      }
+
+      footer {
+        padding: 36px 16px 20px
+      }
+    }
+
+    /* COMMON */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: .78rem;
+      color: var(--yellow-dark);
+      font-weight: 800;
+      margin-bottom: 10px;
+      display: block
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px
+    }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700
+    }
+
+    .section-header p {
+      color: #777;
+      margin-top: 12px;
+      font-size: .97rem;
+      max-width: 520px;
+      margin-inline: auto;
+      line-height: 1.6
+    }
+
+    .btn-primary {
+      background: var(--green-dark);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 26px;
+      font-size: .95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Nunito', sans-serif
+    }
+
+    .btn-primary:hover {
+      background: var(--green)
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-dark);
+      border: 1.5px solid #ccc;
+      border-radius: 10px;
+      padding: 13px 26px;
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color .2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Nunito', sans-serif
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--yellow);
+      color: var(--green-dark)
+    }
+
+    /* PAGE HERO — BookMyShow style dark banner */
+    .page-hero {
+      background: linear-gradient(135deg, #0f2214 0%, #1a3020 50%, #0f1a10 100%);
+      padding: 48px clamp(20px, 5vw, 80px) 40px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(10, 30, 20, .65) 0%, rgba(0, 0, 0, .2) 100%)
+    }
+
+    .page-hero-inner {
+      position: relative;
+      z-index: 1
+    }
+
+    .breadcrumb {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .5);
+      margin-bottom: 14px
+    }
+
+    .breadcrumb a {
+      color: var(--yellow);
+      text-decoration: none;
+      font-weight: 600
+    }
+
+    .breadcrumb a:hover {
+      color: var(--yellow-light)
+    }
+
+    .breadcrumb span {
+      margin: 0 6px;
+      color: rgba(255, 255, 255, .3)
+    }
+
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.2
+    }
+
+    .page-hero p {
+      color: rgba(255, 255, 255, .75);
+      font-size: .97rem;
+      max-width: 560px;
+      line-height: 1.65
+    }
+
+    /* FILTER BAR — BookMyShow style */
+    .filter-bar-wrap {
+      background: #fff;
+      border-bottom: 1px solid #f0f0f0;
+      padding: 0 clamp(16px, 4vw, 60px);
+      position: sticky;
+      top: 68px;
+      z-index: 100;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none
+    }
+
+    .filter-bar-wrap::-webkit-scrollbar {
+      display: none
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      align-items: center
+    }
+
+    .filter-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 14px 20px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      color: #666;
+      cursor: pointer;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+      text-decoration: none
+    }
+
+    .filter-btn:hover {
+      color: var(--green-dark)
+    }
+
+    .filter-btn.active {
+      color: var(--green-dark);
+      border-bottom-color: var(--yellow)
+    }
+
+    /* CARDS */
+    .cards-section {
+      padding: 40px clamp(16px, 4vw, 60px)
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px
+    }
+
+    .page-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1.5px solid #f0f0e8;
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+      display: flex;
+      flex-direction: column
+    }
+
+    .page-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, .1)
+    }
+
+    .page-card-img {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, var(--yellow-pale), #ffe090);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem
+    }
+
+    .page-card-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .page-card-body {
+      padding: 18px 18px 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1
+    }
+
+    .page-card-tag {
+      display: inline-block;
+      background: var(--yellow-pale);
+      color: var(--yellow-dark);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: .72rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      border: 1px solid var(--yellow)
+    }
+
+    .page-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text-dark);
+      line-height: 1.3
+    }
+
+    .page-card-body p {
+      color: #777;
+      font-size: .83rem;
+      line-height: 1.55;
+      margin-bottom: 14px;
+      flex: 1
+    }
+
+    .page-card-meta {
+      font-size: .78rem;
+      color: #aaa;
+      margin-bottom: 12px
+    }
+
+    .page-card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green-dark);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s;
+      align-self: flex-start
+    }
+
+    .page-card-btn:hover {
+      background: var(--green)
+    }
+
+    .page-card-btn.yellow {
+      background: var(--yellow);
+      color: var(--black)
+    }
+
+    .page-card-btn.yellow:hover {
+      background: var(--yellow-dark)
+    }
+
+
+    .prog-main {
+      padding: 40px clamp(16px, 4vw, 60px) 60px
+    }
+
+    .prog-full-card {
+      background: #fff;
+      border: 1.5px solid #f0f0e8;
+      border-radius: 18px;
+      padding: 28px;
+      display: flex;
+      gap: 24px;
+      margin-bottom: 22px;
+      transition: transform .22s, box-shadow .22s;
+      align-items: flex-start
+    }
+
+    .prog-full-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .09)
+    }
+
+    .prog-icon-lg {
+      font-size: 2.8rem;
+      flex-shrink: 0;
+      width: 64px;
+      height: 64px;
+      background: var(--yellow-pale);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .prog-info {
+      flex: 1
+    }
+
+    .prog-tag {
+      display: inline-block;
+      border-radius: 20px;
+      padding: 3px 11px;
+      font-size: .72rem;
+      font-weight: 700;
+      margin-bottom: 10px
+    }
+
+    .tag-free {
+      background: #e8f4e8;
+      color: var(--green-dark)
+    }
+
+    .tag-default {
+      background: var(--yellow-pale);
+      color: var(--yellow-dark);
+      border: 1px solid var(--yellow)
+    }
+
+    .tag-advanced {
+      background: #1e2438;
+      color: #a0a8e0
+    }
+
+    .prog-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-dark)
+    }
+
+    .prog-info>p {
+      color: #666;
+      font-size: .9rem;
+      line-height: 1.65;
+      margin-bottom: 14px
+    }
+
+    .prog-details {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 14px
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .8rem;
+      color: #888;
+      font-weight: 600
+    }
+
+    .detail-item svg {
+      width: 14px;
+      height: 14px;
+      stroke: #aaa;
+      stroke-width: 2;
+      fill: none;
+      flex-shrink: 0
+    }
+
+    .prog-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px
+    }
+
+    .prog-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .85rem;
+      color: #555
+    }
+
+    .prog-features li::before {
+      content: '✦';
+      color: var(--yellow-dark);
+      font-size: .6rem;
+      flex-shrink: 0
+    }
+
+    .cat-section {
+      margin-bottom: 16px
+    }
+
+    .cat-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow-pale);
+      border: 1px solid var(--yellow);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: .82rem;
+      font-weight: 800;
+      color: var(--yellow-dark);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: .06em
+    }
+
+    .prog-small-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px
+    }
+
+    .prog-small-card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1.5px solid #f0f0e8;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform .2s, box-shadow .2s
+    }
+
+    .prog-small-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .08)
+    }
+
+    .prog-small-card .prog-icon {
+      font-size: 1.8rem
+    }
+
+    .prog-small-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: .97rem;
+      font-weight: 700;
+      color: var(--text-dark)
+    }
+
+    .prog-small-card p {
+      color: #777;
+      font-size: .83rem;
+      line-height: 1.55;
+      flex: 1
+    }
+
+    .prog-small-card a {
+      align-self: flex-start
+    }
+
+    @media(max-width:700px) {
+      .prog-full-card {
+        flex-direction: column
+      }
+
+      .prog-icon-lg {
+        width: 52px;
+        height: 52px;
+        font-size: 2.2rem
+      }
+
+      .prog-small-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+
+    /* ── IMAGE SLOT SUPPORT ── */
+    .img-slot {
+      position: relative;
+      overflow: hidden
+    }
+
+    .img-slot img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+
+    /* Image inside boxes */
+    .about-img-side {
+      position: relative
+    }
+
+    .about-img-side img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .about-img-side span {
+      position: relative;
+      z-index: 1
+    }
+
+    .event-card-img {
+      position: relative
+    }
+
+    .gallery-item img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      z-index: 0
+    }
+
+    .gallery-item span {
+      position: relative;
+      z-index: 1
+    }
+
+    .blog-thumb {
+      position: relative
+    }
+
+    .blog-thumb img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .prog-icon-lg {
+      position: relative;
+      overflow: hidden
+    }
+
+    .prog-icon-lg img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .prog-icon-lg span,
+    .prog-icon-lg+.prog-info {
+      position: relative;
+      z-index: 1
+    }
+
+    .prog-icon {
+      position: relative;
+      overflow: hidden
+    }
+
+    .prog-icon img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .pkg-big-icon {
+      position: relative;
+      overflow: hidden
+    }
+
+    .pkg-big-icon img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .recent-icon {
+      position: relative;
+      overflow: hidden
+    }
+
+    .recent-icon img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    /* ── HERO BACKGROUND IMAGE ── */
+    .page-hero {
+      position: relative;
+      overflow: hidden
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      opacity: .35;
+      z-index: 0;
+    }
+
+    .page-hero::after {
+      z-index: 1
+    }
+
+    .page-hero-inner {
+      position: relative;
+      z-index: 2
+    }
+  </style>
+</head>
+
+<body>
+  <!-- TOP NAV -->
+  <div class="top-nav">
+    <div class="top-nav-inner">
+      <a href="index.html" class="nav-logo" title="Be Happy - Home">
+        <img src="./Assets/WhatsApp-Image-2025-01-16-at-07.59.36_f1f82ec6.jpg" alt="Be Happy"
+          onerror="this.style.display='none'" />
+        <span class="nav-logo-text" style="display:none">Be<span>Happy</span></span>
+      </a>
+      <div class="nav-search">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" placeholder="Search for Programs, Events, Retreats..." />
+      </div>
+      <div class="nav-location">
+        <span>&#128205;</span><span>Ahmedabad</span>
+        <span style="font-size:.7rem;color:#888;margin-left:2px">&#9660;</span>
+      </div>
+      <div class="nav-right">
+        <a href="contact.html" class="btn-login">Login</a>
+        <a href="contact.html" class="btn-signup">Register</a>
+        <button class="nav-hamburger" id="accountBtn" aria-label="Account Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- SUB NAV -->
+  <nav class="sub-nav">
+    <ul class="sub-nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="package.html">Packages</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="science.html">Science</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <!-- DRAWER -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="account-drawer" id="accountDrawer">
+    <button class="drawer-close" id="drawerClose">&#10005;</button>
+    <div class="drawer-header">
+      <h3>Hey!</h3>
+      <div class="drawer-promo">
+        <div class="drawer-promo-icon">&#127873;</div>
+        <div class="drawer-promo-text">Unlock special offers &amp;<br />great benefits</div>
+        <a href="contact.html" class="btn-drawer-auth">Login / Register</a>
+      </div>
+    </div>
+    <div class="drawer-menu">
+      <a href="#" class="drawer-item">
+        <div class="drawer-item-icon">&#128276;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Notifications</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="#" class="drawer-item locked">
+        <div class="drawer-item-icon">&#128197;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Your Orders</div>
+          <div class="drawer-item-sub">View all your bookings &amp; purchases</div>
+        </div><span class="drawer-item-arrow">&#128274;</span>
+      </a>
+      <a href="programs.html" class="drawer-item">
+        <div class="drawer-item-icon">&#127775;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">My Programs</div>
+          <div class="drawer-item-sub">Enrolled &amp; completed programs</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="package.html" class="drawer-item">
+        <div class="drawer-item-icon">&#127873;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">My Packages</div>
+          <div class="drawer-item-sub">View your wellness packages</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="#" class="drawer-item">
+        <div class="drawer-item-icon">&#128172;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Help &amp; Support</div>
+          <div class="drawer-item-sub">View commonly asked queries</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="#" class="drawer-item locked">
+        <div class="drawer-item-icon">&#9881;&#65039;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Account &amp; Settings</div>
+          <div class="drawer-item-sub">Profile, Payments &amp; More</div>
+        </div><span class="drawer-item-arrow">&#128274;</span>
+      </a>
+      <a href="#" class="drawer-item">
+        <div class="drawer-item-icon">&#11088;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Rewards</div>
+          <div class="drawer-item-sub">View your rewards &amp; unlock new ones</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="contact.html" class="drawer-item">
+        <div class="drawer-item-icon">&#127758;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Book a Session</div>
+          <div class="drawer-item-sub">Book your intro talk or program</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1920&q=80" alt="Hero Background" class="page-hero-bg" onerror="this.style.display='none'" />
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>Programs</div>
+      <h1>Our Programs</h1>
+      <p>From beginner-friendly intro talks to advanced retreats and community service initiatives — a program for every
+        stage of your journey.</p>
+    </div>
+  </div>
+
+  <!-- CATEGORY FILTER -->
+  <div class="filter-bar-wrap">
+    <div class="filter-bar">
+      <a href="#self-development" class="filter-btn active">Self Development</a>
+      <a href="#children-youth" class="filter-btn">Children &amp; Youth</a>
+      <a href="#public-service" class="filter-btn">Public Service</a>
+      <a href="#community" class="filter-btn">Community Connect</a>
+    </div>
+  </div>
+
+  <div class="prog-main">
+
+    <!-- SELF DEVELOPMENT -->
+    <section id="self-development" class="cat-section">
+      <div class="cat-label">&#127807; Self Development</div>
+      <div class="section-header" style="text-align:left;margin-bottom:24px">
+        <h2>Self Development Programs</h2>
+        <p>Evidence-based SKY breathing techniques, meditation and mindfulness practices that dissolve stress, restore
+          energy, and help you live from your fullest potential.</p>
+      </div>
+
+      <div class="prog-full-card fade-in">
+        <div class="prog-icon-lg" style="position:relative;overflow:hidden">
+          <!-- ✏️ SLOT 28: src="" mein apna image path likho -->
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80" alt="Program"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:14px;opacity:.7"
+            onerror="this.style.display='none'" />
+          <span style="position:relative;z-index:1">&#129345;</span>
+        </div>
+        <div class="prog-info">
+          <span class="prog-tag tag-free">FREE &middot; All Levels</span>
+          <h3>Intro Talk</h3>
+          <p>Start your wellness journey with our free 1-hour intro talk. Experience the world-renowned, evidence-based
+            SKY program — backed by over 100 independent published studies.</p>
+          <div class="prog-details">
+            <div class="detail-item"><svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>1 Hour</div>
+            <div class="detail-item"><svg viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>Every Saturday</div>
+            <div class="detail-item"><svg viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Ahmedabad</div>
+          </div>
+          <ul class="prog-features">
+            <li>Introduction to evidence-based SKY program</li>
+            <li>Experience of powerful breathwork and guided relaxation</li>
+            <li>Q&amp;A with a certified teacher</li>
+            <li>Meet the Be Happy community</li>
+          </ul>
+          <a href="contact.html" class="btn-primary">Reserve Your Seat &rarr;</a>
+        </div>
+      </div>
+
+      <div class="prog-small-grid">
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 29: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#65039;</span>
+          </div><span class="prog-tag tag-default">Beginner to Intermediate</span>
+          <h4>Art of Living — SKY Breath</h4>
+          <p>The world-renowned, evidence-based SKY program. Clinically demonstrated to enhance quality of life across
+            100+ peer-reviewed studies.</p><a href="contact.html" class="btn-primary">Learn More &rarr;</a>
+        </div>
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 30: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#10024;</span>
+          </div><span class="prog-tag tag-default">Intermediate</span>
+          <h4>Sahaj Samadhi Meditation</h4>
+          <p>Discover the ancient practice that effortlessly cuts through mental chatter, bringing deep relaxation and
+            lasting clarity.</p><a href="contact.html" class="btn-primary">Explore &rarr;</a>
+        </div>
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 31: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#129504;</span>
+          </div><span class="prog-tag tag-advanced">Advanced</span>
+          <h4>Advanced Meditation</h4>
+          <p>A transformative experience that blends deep meditation, guided breathwork, and extended silence to quiet
+            the mind completely.</p><a href="contact.html" class="btn-primary">Enquire &rarr;</a>
+        </div>
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 32: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1541480601022-2308c0f02487?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#128564;</span>
+          </div><span class="prog-tag tag-default">Beginner &middot; Focus</span>
+          <h4>Sleep &amp; Anxiety Protocol</h4>
+          <p>Targeted protocol using breathwork and yoga nidra to restore healthy sleep patterns and reduce generalised
+            anxiety.</p><a href="contact.html" class="btn-primary">Know More &rarr;</a>
+        </div>
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 33: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#127956;</span>
+          </div><span class="prog-tag tag-advanced">Advanced &middot; Residential</span>
+          <h4>Silent Retreat</h4>
+          <p>A transformative residential experience blending deep meditation, guided breathwork, and extended silence.
+          </p><a href="contact.html" class="btn-primary">Join Retreat &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHILDREN & YOUTH -->
+    <section id="children-youth" class="cat-section">
+      <div class="cat-label">&#127774; Children &amp; Youth</div>
+      <div class="prog-small-grid">
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 34: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#127775;</span>
+          </div><span class="prog-tag tag-default">Ages 8–13</span>
+          <h4>Art Excel (SKY Kids)</h4>
+          <p>SKY Kids supports the overall well-being of children by teaching empowering techniques that foster peace of
+            mind and resilience.</p><a href="contact.html" class="btn-primary">Learn More &rarr;</a>
+        </div>
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 35: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#127979;</span>
+          </div><span class="prog-tag tag-default">Grades 3–12</span>
+          <h4>SKY for Schools</h4>
+          <p>Since 2008, more than 110,000 young people have benefitted from SKY Schools — a proprietary, evidence-based
+            well-being program.</p><a href="contact.html" class="btn-primary">Learn More &rarr;</a>
+        </div>
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 36: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#127979;</span>
+          </div><span class="prog-tag tag-default">College / University</span>
+          <h4>SKY Campus Happiness</h4>
+          <p>A holistic happiness and total well-being program designed to help students, faculty and staff achieve
+            their highest potential.</p><a href="contact.html" class="btn-primary">Learn More &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLIC SERVICE -->
+    <section id="public-service" class="cat-section">
+      <div class="cat-label">&#127758; Public Service</div>
+      <div class="prog-small-grid">
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 37: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#129354;</span>
+          </div><span class="prog-tag tag-default">Veterans</span>
+          <h4>Veterans Program</h4>
+          <p>The Power Breath Meditation workshop transforms lives by restoring well-being, mental focus, and a renewed
+            sense of purpose.</p><a href="contact.html" class="btn-primary">Learn More &rarr;</a>
+        </div>
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 38: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1486520299386-6d106b22014b?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#127963;</span>
+          </div><span class="prog-tag tag-default">Law Enforcement</span>
+          <h4>Police &amp; Cities for Peace</h4>
+          <p>An IAHV initiative bringing SKY breath and meditation to law enforcement and city communities.</p><a
+            href="contact.html" class="btn-primary">Learn More &rarr;</a>
+        </div>
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 39: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#128274;</span>
+          </div><span class="prog-tag tag-default">Justice System</span>
+          <h4>Prison SMART Program</h4>
+          <p>Prison SMART (Stress Management and Rehabilitation Training) is IAHV's unique rehabilitation program for
+            incarcerated individuals.</p><a href="contact.html" class="btn-primary">Learn More &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY CONNECT -->
+    <section id="community" class="cat-section">
+      <div class="cat-label">&#128149; Community Connect</div>
+      <div class="prog-small-grid">
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 40: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1516307365426-bea591f05011?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#129491;</span>
+          </div><span class="prog-tag tag-default">Senior Outreach</span>
+          <h4>Adult &amp; Assisted Living Centres</h4>
+          <p>Specially adapted breathwork, meditation and wellness sessions brought directly to adult care and assisted
+            living communities.</p><a href="contact.html" class="btn-primary">Learn More &rarr;</a>
+        </div>
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 41: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#127807;</span>
+          </div><span class="prog-tag tag-default">Ongoing Support</span>
+          <h4>Build Your Practice — Satsang</h4>
+          <p>Weekly community gatherings combining group SKY practice, meditation, and knowledge. Open to all program
+            graduates.</p><a href="contact.html" class="btn-primary">Join Us &rarr;</a>
+        </div>
+        <div class="prog-small-card fade-in">
+          <div class="prog-icon" style="position:relative;overflow:hidden;border-radius:10px">
+            <!-- ✏️ SLOT 42: src="" mein apna image path likho -->
+            <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80" alt="Program"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7"
+              onerror="this.style.display='none'" />
+            <span style="position:relative;z-index:1">&#127926;</span>
+          </div><span class="prog-tag tag-default">Monthly</span>
+          <h4>Kirtan — Monthly Event</h4>
+          <p>An immersive evening of devotional music and chanting celebrating unity, followed by prasad and community
+            fellowship.</p><a href="contact.html" class="btn-primary">Join Free &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo"><img src="./Assets/WhatsApp-Image-2025-01-16-at-07.59.36_f1f82ec6.jpg"
+            alt=""></a>
+        <p>A spiritual wellness community inspired by Art of Living, dedicated to helping you live a stress-free, joyful
+          life.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <ul>
+          <li><a href="programs.html">Intro Talk</a></li>
+          <li><a href="programs.html">Sky Breath Workshop</a></li>
+          <li><a href="programs.html">Sahaj Samadhi</a></li>
+          <li><a href="programs.html">Silent Retreat</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="science.html">Science</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Be Happy Tutorials. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    const accountBtn = document.getElementById('accountBtn');
+    const accountDrawer = document.getElementById('accountDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const drawerClose = document.getElementById('drawerClose');
+    function openDrawer() { accountDrawer.classList.add('open'); drawerOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { accountDrawer.classList.remove('open'); drawerOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+    if (accountBtn) accountBtn.addEventListener('click', openDrawer);
+    if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+    if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+    const pg = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.sub-nav-links a').forEach(a => { if (a.getAttribute('href') === pg) a.classList.add('active') });
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        this.closest('.filter-bar').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-q')?.addEventListener('click', function () {
+        item.classList.toggle('open');
+      });
+    });
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }) }, { threshold: .08 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  </script>
+</body>
+
+</html>

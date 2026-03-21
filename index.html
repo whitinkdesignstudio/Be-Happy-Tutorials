@@ -1,0 +1,2911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Be Happy – Spiritual Wellness Community</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito:wght@300;400;600;700;800;900&display=swap');
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --yellow: #F5C518;
+      --yellow-dark: #E6A800;
+      --yellow-light: #FFD95A;
+      --yellow-pale: #FFFBEA;
+      --green: #2D7A2D;
+      --green-dark: #1F5C1F;
+      --green-light: #4CAF50;
+      --white: #ffffff;
+      --bg-section: #FFFBEA;
+      --text-dark: #1a1a1a;
+      --card-radius: 16px;
+      --black: #1a1a1a;
+      --black-soft: #2c2c2c;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text-dark);
+      background: #fff;
+      overflow-x: hidden;
+      max-width: 100vw
+    }
+
+    /* ===== NAVBAR ===== */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: #fff;
+      border-bottom: 3px solid var(--yellow);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .08)
+    }
+
+    .top-nav-inner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 40px;
+      height: 68px
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .nav-logo-text {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1
+    }
+
+    .nav-logo-text span {
+      color: var(--green-dark)
+    }
+
+    .nav-search {
+      flex: 1;
+      max-width: 480px;
+      position: relative
+    }
+
+    .nav-search input {
+      width: 100%;
+      padding: 10px 16px 10px 42px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 24px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .92rem;
+      color: #333;
+      background: #f8f8f8;
+      outline: none;
+      transition: border-color .2s, background .2s
+    }
+
+    .nav-search input:focus {
+      border-color: var(--yellow);
+      background: #fff
+    }
+
+    .nav-search .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      pointer-events: none;
+      font-size: 1rem
+    }
+
+    .nav-search .search-icon i {
+      color: black;
+    }
+
+    .nav-location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 1.5px solid #e0e0e0;
+      background: #f8f8f8;
+      transition: border-color .2s;
+      flex-shrink: 0;
+      white-space: nowrap;
+      font-size: .88rem;
+      font-weight: 600;
+      color: #444;
+      user-select: none;
+      margin-left: 40rem;
+    }
+
+    .nav-location:hover {
+      border-color: var(--yellow)
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+      flex-shrink: 0
+    }
+
+    .btn-login {
+      background: transparent;
+      color: var(--green-dark);
+      border: 2px solid var(--green-dark);
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      text-decoration: none;
+      white-space: nowrap
+    }
+
+    .btn-login:hover {
+      background: var(--green-dark);
+      color: #fff
+    }
+
+    .btn-signup {
+      background: var(--yellow);
+      color: var(--black);
+      border: none;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s;
+      text-decoration: none;
+      white-space: nowrap
+    }
+
+    .btn-signup:hover {
+      background: var(--yellow-dark)
+    }
+
+    .nav-hamburger {
+      background: none;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      padding: 8px 10px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex-shrink: 0;
+      transition: border-color .2s
+    }
+
+    .nav-hamburger:hover {
+      border-color: var(--yellow)
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #444;
+      border-radius: 2px
+    }
+
+    .account-drawer {
+      position: fixed;
+      top: 0;
+      right: -340px;
+      width: 320px;
+      height: 100vh;
+      background: #fff;
+      z-index: 999;
+      box-shadow: -4px 0 24px rgba(0, 0, 0, .15);
+      transition: right .3s ease;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto
+    }
+
+    .account-drawer.open {
+      right: 0
+    }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .35);
+      z-index: 998;
+      display: none
+    }
+
+    .drawer-overlay.open {
+      display: block
+    }
+
+    .drawer-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid #f0f0f0
+    }
+
+    .drawer-header h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 16px
+    }
+
+    .drawer-promo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--yellow-pale);
+      border: 1.5px solid var(--yellow);
+      border-radius: 12px;
+      padding: 14px
+    }
+
+    .drawer-promo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0
+    }
+
+    .drawer-promo-text {
+      flex: 1;
+      font-size: .83rem;
+      color: var(--green-dark);
+      font-weight: 600;
+      line-height: 1.4
+    }
+
+    .btn-drawer-auth {
+      background: transparent;
+      color: var(--green-dark);
+      border: 2px solid var(--green-dark);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      flex-shrink: 0
+    }
+
+    .drawer-menu {
+      flex: 1;
+      padding: 8px 0
+    }
+
+    .drawer-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      border-bottom: 1px solid #f5f5f5;
+      cursor: pointer;
+      transition: background .15s;
+      text-decoration: none;
+      color: var(--text-dark)
+    }
+
+    .drawer-item:hover {
+      background: #fafafa
+    }
+
+    .drawer-item-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0
+    }
+
+    .drawer-item-title {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--text-dark)
+    }
+
+    .drawer-item-sub {
+      font-size: .78rem;
+      color: #999;
+      margin-top: 2px
+    }
+
+    .drawer-item-arrow {
+      margin-left: auto;
+      color: #ccc;
+      font-size: .85rem
+    }
+
+    .drawer-item.locked .drawer-item-title,
+    .drawer-item.locked .drawer-item-sub {
+      color: #bbb
+    }
+
+    .drawer-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #999;
+      padding: 4px 8px;
+      border-radius: 6px
+    }
+
+    .drawer-close:hover {
+      color: var(--text-dark)
+    }
+
+    .sub-nav {
+      background: #fff;
+      border-bottom: 2px solid #f0f0f0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none
+    }
+
+    .sub-nav::-webkit-scrollbar {
+      display: none
+    }
+
+    .sub-nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      flex-wrap: nowrap;
+      padding: 0 20px;
+      min-width: max-content
+    }
+
+    .sub-nav-links a {
+      text-decoration: none;
+      color: #555;
+      font-size: .88rem;
+      font-weight: 600;
+      padding: 13px 14px;
+      display: block;
+      border-bottom: 3px solid transparent;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+      flex-shrink: 0
+    }
+
+    .sub-nav-links a:hover {
+      color: var(--green-dark)
+    }
+
+    .sub-nav-links a.active {
+      color: var(--green-dark);
+      border-bottom-color: var(--yellow)
+    }
+
+    @media(max-width:900px) {
+      .top-nav-inner {
+        padding: 0 16px;
+        gap: 10px
+      }
+
+      .nav-search {
+        max-width: none;
+        flex: 1
+      }
+
+      .nav-location {
+        display: none
+      }
+
+      .btn-login,
+      .btn-signup {
+        display: none
+      }
+
+      .sub-nav-links {
+        padding: 0 12px
+      }
+
+      .sub-nav-links a {
+        padding: 12px 11px;
+        font-size: .84rem
+      }
+    }
+
+    @media(max-width:480px) {
+      .sub-nav-links a {
+        padding: 11px 10px;
+        font-size: .8rem
+      }
+    }
+
+    /* ===== HERO BANNER ===== */
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      min-height: 88vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center
+    }
+
+    .hero-banner-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #0f1f12 0%, #1a3020 40%, #0f1f12 100%);
+      z-index: 0
+    }
+
+    .hero-banner-bg img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .5
+    }
+
+    .hero-banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, .4) 55%, rgba(0, 0, 0, .1) 100%);
+      z-index: 1
+    }
+
+    .hero-banner-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 80px 80px;
+      color: #fff
+    }
+
+    .hero-tag {
+      display: inline-block;
+      /* background: var(--yellow); */
+      color: white;
+      font-size: .78rem;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 22px
+    }
+
+    .hero-banner-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 80px
+    }
+
+    .hero-banner-content h1 .highlight {
+      color: var(--yellow)
+    }
+
+    .hero-banner-content p {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, .82);
+      line-height: 1.75;
+      max-width: 480px;
+      margin-bottom: 36px
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap
+    }
+
+    .btn-hero-primary {
+      background: var(--yellow);
+      color: var(--black);
+      border: none;
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background .2s, transform .15s
+    }
+
+    .btn-hero-primary:hover {
+      background: var(--yellow-dark);
+      transform: translateY(-2px)
+    }
+
+    .btn-hero-secondary {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, .65);
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all .2s
+    }
+
+    .btn-hero-secondary:hover {
+      background: rgba(255, 255, 255, .15);
+      border-color: #fff
+    }
+
+    .hero-dots {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      gap: 8px
+    }
+
+    .hero-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .35);
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .hero-dot.active {
+      background: var(--yellow);
+      width: 28px;
+      border-radius: 5px
+    }
+
+    @media(max-width:768px) {
+      .hero-banner {
+        min-height: 70vh
+      }
+
+      .hero-banner-content {
+        padding: 48px 24px
+      }
+
+      .hero-banner-content h1 {
+        font-size: 2rem
+      }
+    }
+
+    @media(max-width:480px) {
+      .hero-banner-content h1 {
+        font-size: 1.7rem
+      }
+
+      .hero-banner-content p {
+        font-size: .95rem
+      }
+    }
+
+    /* ===== COMMON ===== */
+    .sec-label {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: .78rem;
+      color: var(--yellow-dark);
+      font-weight: 800;
+      margin-bottom: 10px;
+      display: block
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 52px
+    }
+
+    .section-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700
+    }
+
+    .section-head p {
+      color: #777;
+      margin-top: 14px;
+      font-size: 1rem;
+      max-width: 520px;
+      margin-inline: auto;
+      line-height: 1.6
+    }
+
+    /* ===== PACKAGES ===== */
+    /* ── PACKAGES SECTION ── */
+    .pkg-sec {
+      padding: 60px clamp(16px, 5vw, 80px);
+      background: #f5f5f0
+    }
+
+    .pkg-head {
+      text-align: center;
+      margin-bottom: 40px
+    }
+
+    .pkg-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 8px
+    }
+
+    .pkg-head p {
+      color: #999;
+      font-size: .95rem
+    }
+
+    .pkg-row {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      align-items: stretch
+    }
+
+    .pkg-card {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      border-radius: 18px;
+      border: 1.5px solid #e8e8e0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .28s, box-shadow .28s
+    }
+
+    .pkg-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, .12)
+    }
+
+    .pkg-img {
+      width: 100%;
+      height: 160px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0
+    }
+
+    .pkg-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s
+    }
+
+    .pkg-card:hover .pkg-img img {
+      transform: scale(1.07)
+    }
+
+    .pkg-img.cream-bg {
+      background: #FAFAE8
+    }
+
+    .pkg-img.green-bg {
+      background: #1F5C1F
+    }
+
+    .pkg-img.dark-bg {
+      background: #1a1a2e
+    }
+
+    .pkg-top {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #f0f0e8
+    }
+
+    .pkg-top.cream {
+      background: #FAFAE8
+    }
+
+    .pkg-top.green {
+      background: #1F5C1F
+    }
+
+    .pkg-top.dark {
+      background: #1a1a2e
+    }
+
+    .pkg-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      background: rgba(255, 255, 255, .15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem
+    }
+
+    .pkg-top.cream .pkg-icon {
+      background: rgba(0, 0, 0, .07)
+    }
+
+    .pkg-top h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: .98rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.25
+    }
+
+    .pkg-top.green h3,
+    .pkg-top.dark h3 {
+      color: #fff
+    }
+
+    .pkg-badge {
+      display: inline-block;
+      background: #F5C518;
+      color: #1a1a1a;
+      font-size: .58rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 2px 9px;
+      border-radius: 20px;
+      margin-bottom: 4px
+    }
+
+    .pkg-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1
+    }
+
+    .pkg-feats {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 22px;
+      flex: 1
+    }
+
+    .pkg-feats li {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: .84rem;
+      font-weight: 600;
+      color: #333
+    }
+
+    .pkg-feats li::before {
+      content: '✦';
+      color: #F5C518;
+      font-size: .62rem;
+      flex-shrink: 0
+    }
+
+    .pkg-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .84rem;
+      font-weight: 800;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all .22s;
+      align-self: flex-start
+    }
+
+    .pkg-btn span {
+      display: inline-block;
+      transition: transform .2s
+    }
+
+    .pkg-btn:hover span {
+      transform: translateX(4px)
+    }
+
+    .pkg-btn-yellow {
+      background: #F5C518;
+      color: #1a1a1a
+    }
+
+    .pkg-btn-yellow:hover {
+      background: #D4A900
+    }
+
+    .pkg-btn-green {
+      background: #1F5C1F;
+      color: #fff
+    }
+
+    .pkg-btn-green:hover {
+      background: #2D7A2D
+    }
+
+    @media(max-width:700px) {
+      .pkg-row {
+        flex-direction: column
+      }
+    }
+
+    /* ===== PROGRAMS ===== */
+    /* ── WELLNESS PROGRAMS ── */
+    .wp-sec {
+      padding: 60px clamp(16px, 5vw, 80px);
+      background: #fff
+    }
+
+    .wp-head {
+      text-align: center;
+      margin-bottom: 40px
+    }
+
+    .wp-label {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #E6A800;
+      margin-bottom: 8px
+    }
+
+    .wp-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 6px
+    }
+
+    .wp-head p {
+      color: #999;
+      font-size: .9rem
+    }
+
+    .wp-row {
+      display: flex;
+      flex-direction: row;
+      gap: 18px;
+      align-items: stretch
+    }
+
+    .wc {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      border-radius: 16px;
+      border: 1.5px solid #eee;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .28s, box-shadow .28s
+    }
+
+    .wc:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .11)
+    }
+
+    .wc-img {
+      width: 100%;
+      height: 160px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem
+    }
+
+    .wc-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s
+    }
+
+    .wc:hover .wc-img img {
+      transform: scale(1.07)
+    }
+
+    .bg1 {
+      background: linear-gradient(135deg, #FFFBEA, #FFE878)
+    }
+
+    .bg2 {
+      background: linear-gradient(135deg, #E8F4E8, #B8DDB8)
+    }
+
+    .bg3 {
+      background: linear-gradient(135deg, #E8F0FF, #B8CCF0)
+    }
+
+    .bg4 {
+      background: linear-gradient(135deg, #FFF0E8, #F8CCA8)
+    }
+
+    .bg5 {
+      background: linear-gradient(135deg, #F0E8FF, #D0B8F0)
+    }
+
+    .wc-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #F5C518;
+      color: #1a1a1a;
+      font-size: .55rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+      z-index: 1
+    }
+
+    .wc-body {
+      padding: 16px 16px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1
+    }
+
+    .wc-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: .95rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+      line-height: 1.25
+    }
+
+    .wc-body p {
+      font-size: .78rem;
+      color: #888;
+      line-height: 1.6;
+      margin-bottom: 14px;
+      flex: 1
+    }
+
+    .wc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 9px 14px;
+      border-radius: 7px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .76rem;
+      font-weight: 800;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all .22s;
+      width: 100%;
+      margin-top: auto
+    }
+
+    .wc-btn span {
+      display: inline-block;
+      transition: transform .2s
+    }
+
+    .wc-btn:hover span {
+      transform: translateX(3px)
+    }
+
+    .btn-y {
+      background: #F5C518;
+      color: #1a1a1a
+    }
+
+    .btn-y:hover {
+      background: #D4A900
+    }
+
+    .btn-g {
+      background: #1F5C1F;
+      color: #fff
+    }
+
+    .btn-g:hover {
+      background: #2D7A2D
+    }
+
+    .btn-d {
+      background: #1a1a2e;
+      color: #fff
+    }
+
+    .btn-d:hover {
+      background: #2d2d44
+    }
+
+    .btn-o {
+      background: #E65C00;
+      color: #fff
+    }
+
+    .btn-o:hover {
+      background: #CC5200
+    }
+
+    .btn-p {
+      background: #5C1F7A;
+      color: #fff
+    }
+
+    .btn-p:hover {
+      background: #7A2D9E
+    }
+
+    @media(max-width:768px) {
+      .wp-row {
+        flex-wrap: wrap
+      }
+
+      .wc {
+        flex: 0 0 calc(50% - 9px)
+      }
+    }
+
+    @media(max-width:480px) {
+      .wp-row {
+        flex-direction: column
+      }
+
+      .wc {
+        flex: none;
+        width: 100%
+      }
+    }
+
+    /* ===== TEAM ===== */
+    /* ===== TEAM SECTION ===== */
+    .team-home {
+      padding: 90px clamp(16px, 6vw, 100px);
+      background: linear-gradient(175deg, #f8f6f1 0%, #ffffff 60%, #f8f6f1 100%);
+      position: relative;
+      overflow: hidden
+    }
+
+    .team-home-watermark {
+      position: absolute;
+      top: -20px;
+      right: -10px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(5rem, 10vw, 11rem);
+      font-weight: 700;
+      color: rgba(0, 0, 0, .028);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      z-index: 0;
+      line-height: 1;
+      letter-spacing: -.02em
+    }
+
+    .scatter {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+      font-style: normal;
+      line-height: 1
+    }
+
+    /* Header */
+    .team-section-head {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 1
+    }
+
+    .team-sec-label {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #D4A017;
+      margin-bottom: 14px;
+      position: relative
+    }
+
+    .team-sec-label::before,
+    .team-sec-label::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 32px;
+      height: 1.5px;
+      background: #D4A017;
+      opacity: .5
+    }
+
+    .team-sec-label::before {
+      right: calc(100% + 10px)
+    }
+
+    .team-sec-label::after {
+      left: calc(100% + 10px)
+    }
+
+    .team-section-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 14px;
+      letter-spacing: -.02em;
+      line-height: 1.1
+    }
+
+    .team-section-head p {
+      color: #b0a898;
+      font-size: .95rem;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-weight: 400
+    }
+
+    /* Grid */
+    .team-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto
+    }
+
+    /* Card */
+    .team-member-card {
+      background: #fff;
+      border-radius: 24px;
+      overflow: visible;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, .07);
+      border: 1px solid rgba(0, 0, 0, .06);
+      transition: transform .35s cubic-bezier(.25, .46, .45, .94), box-shadow .35s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative
+    }
+
+    .team-member-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .13)
+    }
+
+    .team-member-card::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #F5C518 0%, #E6A800 50%, #F5C518 100%);
+      flex-shrink: 0;
+      border-radius: 24px 24px 0 0
+    }
+
+    /* Photo area */
+    .member-photo-area {
+      width: 100%;
+      height: 230px;
+      position: relative;
+      overflow: visible;
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center
+    }
+
+    .member-photo-area::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 86%;
+      height: 210px;
+      border-radius: 0% 0% 50% 50% / 0% 0% 55% 55%;
+      z-index: 0;
+      transition: transform .35s
+    }
+
+    .team-member-card:hover .member-photo-area::before {
+      transform: translateX(-50%) scale(1.03)
+    }
+
+    .team-member-card:nth-child(1) .member-photo-area::before {
+      background: linear-gradient(160deg, #1e4530, #0d2318)
+    }
+
+    .team-member-card:nth-child(2) .member-photo-area::before {
+      background: linear-gradient(160deg, #1e1e48, #0d0d28)
+    }
+
+    .team-member-card:nth-child(3) .member-photo-area::before {
+      background: linear-gradient(160deg, #481e1e, #280d0d)
+    }
+
+    /* Image */
+    .member-photo-area img {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 86%;
+      height: 210px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 50% 50% 0 0 / 55% 55% 0 0;
+      display: block;
+      z-index: 1;
+      transition: transform .6s cubic-bezier(.25, .46, .45, .94)
+    }
+
+    .team-member-card:hover .member-photo-area img {
+      transform: translateX(-50%) scale(1.04)
+    }
+
+    .member-photo-area::after {
+      display: none
+    }
+
+    /* Silhouette */
+    .member-photo-placeholder {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      opacity: .14;
+      z-index: 1;
+      pointer-events: none
+    }
+
+    /* Role tag */
+    .member-role-tag {
+      position: absolute;
+      top: 16px;
+      right: calc(7% + 4px);
+      background: rgba(212, 160, 23, .92);
+      color: #fff;
+      font-size: .6rem;
+      font-weight: 900;
+      padding: 5px 13px;
+      border-radius: 20px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      z-index: 4;
+      border: 1px solid rgba(255, 255, 255, .25);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .15)
+    }
+
+    /* Info */
+    .member-info {
+      padding: 22px 24px 28px;
+      text-align: center;
+      width: 100%
+    }
+
+    .member-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+      letter-spacing: .01em
+    }
+
+    .member-info .role {
+      font-size: .83rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: .01em
+    }
+
+    .team-member-card:nth-child(1) .member-info .role {
+      color: #1a5c30
+    }
+
+    .team-member-card:nth-child(2) .member-info .role {
+      color: #2d1a6a
+    }
+
+    .team-member-card:nth-child(3) .member-info .role {
+      color: #6a1a1a
+    }
+
+    .member-info .exp {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #fffbea;
+      color: #b87a00;
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 4px 13px;
+      border-radius: 20px;
+      border: 1px solid #f0d060;
+      margin-bottom: 16px
+    }
+
+    .member-info .exp::before {
+      content: '★';
+      font-size: .6rem;
+      color: #D4A017
+    }
+
+    .member-divider {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, #F5C518, #E6A800);
+      border-radius: 2px;
+      margin: 0 auto 16px
+    }
+
+    /* Social */
+    .member-social {
+      display: flex;
+      gap: 10px;
+      justify-content: center
+    }
+
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 900;
+      color: #555;
+      transition: all .25s cubic-bezier(.25, .46, .45, .94);
+      border: 1.5px solid #e8e6e0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .05)
+    }
+
+    .social-btn:hover {
+      transform: translateY(-3px) scale(1.12)
+    }
+
+    .social-btn.fb:hover {
+      background: #1877f2;
+      color: #fff;
+      border-color: #1877f2;
+      box-shadow: 0 8px 20px rgba(24, 119, 242, .3)
+    }
+
+    .social-btn.tw:hover {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .2)
+    }
+
+    .social-btn.li:hover {
+      background: #0077b5;
+      color: #fff;
+      border-color: #0077b5;
+      box-shadow: 0 8px 20px rgba(0, 119, 181, .3)
+    }
+
+    /* View all */
+    .team-view-all {
+      text-align: center;
+      margin-top: 52px;
+      position: relative;
+      z-index: 1
+    }
+
+    .team-view-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 36px;
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .9rem;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: .03em;
+      transition: all .28s cubic-bezier(.25, .46, .45, .94);
+      border: 2px solid #1a1a1a
+    }
+
+    .team-view-btn:hover {
+      background: #F5C518;
+      color: #1a1a1a;
+      border-color: #F5C518;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(245, 197, 24, .35)
+    }
+
+    .team-view-btn .arr {
+      display: inline-block;
+      transition: transform .22s;
+      font-size: 1rem
+    }
+
+    .team-view-btn:hover .arr {
+      transform: translateX(5px)
+    }
+
+    /* Responsive */
+    @media(max-width:960px) {
+      .team-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px
+      }
+
+      .team-home {
+        padding: 70px clamp(16px, 5vw, 60px)
+      }
+    }
+
+    @media(max-width:560px) {
+      .team-row {
+        grid-template-columns: 1fr;
+        max-width: 340px
+      }
+
+      .team-section-head h2 {
+        font-size: 1.8rem
+      }
+    }
+
+
+    /* ── PROMO BANNER ── */
+    .promo-banner {
+      position: relative;
+      width: 100%;
+      height: 110px;
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 0 0 0;
+      background: #1a2035;
+    }
+
+    .promo-banner-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 4;
+      display: block;
+    }
+
+    .promo-banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right,
+          rgba(15, 20, 40, 0.92) 0%,
+          rgba(15, 20, 40, 0.75) 40%,
+          rgba(15, 20, 40, 0.55) 100%);
+    }
+
+    .promo-banner-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      gap: 32px;
+    }
+
+    .promo-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+
+    .promo-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .02em;
+      line-height: 1;
+    }
+
+    .promo-logo-text span {
+      color: #F5C518;
+    }
+
+    .promo-logo-sub {
+      font-family: 'Nunito', sans-serif;
+      font-size: .65rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, .5);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .promo-divider {
+      width: 1.5px;
+      height: 52px;
+      background: rgba(255, 255, 255, .2);
+      flex-shrink: 0;
+    }
+
+    .promo-right {
+      flex: 1;
+    }
+
+    .promo-tagline {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(1rem, 2.2vw, 1.5rem);
+      font-weight: 800;
+      color: #F5C518;
+      letter-spacing: .01em;
+      line-height: 1.3;
+    }
+
+    @media(max-width:600px) {
+      .promo-banner {
+        height: auto;
+        padding: 20px 0;
+        border-radius: 10px
+      }
+
+      .promo-banner-content {
+        padding: 0 20px;
+        gap: 16px
+      }
+
+      .promo-logo-text {
+        font-size: 1.2rem
+      }
+
+      .promo-tagline {
+        font-size: .95rem
+      }
+
+      .promo-divider {
+        height: 36px
+      }
+    }
+
+
+    /* ===== EVENTS ===== */
+    .events-home {
+      padding: 80px clamp(16px, 5vw, 80px);
+      background: linear-gradient(135deg, var(--yellow-pale), #fffbdc);
+      position: relative;
+      overflow: hidden;
+      max-width: 100%
+    }
+
+    .events-home-watermark {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 7rem;
+      font-weight: 700;
+      color: rgba(0, 0, 0, .04);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      z-index: 0;
+      max-width: 100%;
+      overflow: hidden
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 1
+    }
+
+    .event-card {
+      background: #fff;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      border: 1.5px solid #f0f0e8;
+      transition: transform .2s, box-shadow .2s
+    }
+
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, .09)
+    }
+
+    /* Event image area */
+    .event-img {
+      width: 100%;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.2rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--yellow-pale), #ffe090)
+    }
+
+    .event-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .event-date-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
+      background: var(--yellow);
+      color: var(--black);
+      border-radius: 8px;
+      padding: 5px 9px;
+      text-align: center;
+      font-weight: 800;
+      line-height: 1.2;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .12)
+    }
+
+    .event-date-badge .day {
+      font-size: 1.2rem;
+      display: block
+    }
+
+    .event-date-badge .month {
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .5px
+    }
+
+    .event-body {
+      padding: 20px
+    }
+
+    .event-tag {
+      display: inline-block;
+      background: var(--yellow-pale);
+      color: var(--yellow-dark);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: .75rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      border: 1px solid var(--yellow)
+    }
+
+    .event-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px
+    }
+
+    .event-card p {
+      color: #777;
+      font-size: .83rem;
+      line-height: 1.5;
+      margin-bottom: 12px
+    }
+
+    .event-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .78rem;
+      color: #aaa;
+      margin-bottom: 14px
+    }
+
+    .btn-event {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--green-dark);
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      padding: 9px 16px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s
+    }
+
+    .btn-event:hover {
+      background: var(--green)
+    }
+
+    /* ===== NEWS ===== */
+    .news-home {
+      padding: 80px;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+      max-width: 100%
+    }
+
+    .news-home-watermark {
+      position: absolute;
+      bottom: 20px;
+      right: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem;
+      font-weight: 700;
+      color: rgba(0, 0, 0, .035);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      z-index: 0;
+      max-width: 100%;
+      overflow: hidden
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 1
+    }
+
+    .news-card {
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      border: 1.5px solid #f0f0e8;
+      transition: transform .2s, box-shadow .2s
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .08)
+    }
+
+    .news-img {
+      width: 100%;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem
+    }
+
+    .news-img.c1 {
+      background: linear-gradient(135deg, #e8f4e8, #c8e8c0)
+    }
+
+    .news-img.c2 {
+      background: linear-gradient(135deg, #fff0d0, #ffe090)
+    }
+
+    .news-img.c3 {
+      background: linear-gradient(135deg, #e8f0ff, #c8d8f8)
+    }
+
+    .news-body {
+      padding: 20px
+    }
+
+    .news-cat {
+      display: inline-block;
+      background: #e8f4e8;
+      color: var(--green-dark);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: .75rem;
+      font-weight: 700;
+      margin-bottom: 10px
+    }
+
+    .news-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: .98rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.4
+    }
+
+    .news-card p {
+      color: #777;
+      font-size: .83rem;
+      line-height: 1.55;
+      margin-bottom: 12px
+    }
+
+    .news-meta {
+      font-size: .77rem;
+      color: #bbb;
+      margin-bottom: 12px
+    }
+
+    .btn-news {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--green-dark);
+      font-size: .85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color .2s
+    }
+
+    .btn-news:hover {
+      color: var(--yellow-dark)
+    }
+
+    /* ===== CTA ===== */
+    .cta-home {
+      padding: 90px clamp(16px, 5vw, 80px);
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-dark));
+      text-align: center
+    }
+
+    .cta-home h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 16px
+    }
+
+    .cta-home p {
+      color: var(--black-soft);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto 36px;
+      line-height: 1.7
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    .btn-cta-primary {
+      background: var(--black);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 15px 30px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background .2s;
+    }
+
+    .btn-cta-primary:hover {
+      background: #333
+    }
+
+    .btn-cta-secondary {
+      background: transparent;
+      color: var(--black);
+      border: 2px solid var(--black);
+      border-radius: 10px;
+      padding: 15px 30px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all .2s
+    }
+
+    .btn-cta-secondary:hover {
+      background: var(--black);
+      color: #fff
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #111111;
+      color: #ccc;
+      padding: 60px clamp(16px, 5vw, 80px) 30px
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px
+    }
+
+    .footer-brand p {
+      font-size: .9rem;
+      line-height: 1.7;
+      color: #aaa;
+      max-width: 260px;
+      margin-top: 12px
+    }
+
+    .footer-logo {
+
+      color: #fff;
+      line-height: 1;
+      display: inline-block;
+      text-decoration: none
+    }
+
+    .footer-logo img {
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+    }
+
+    .footer-col h5 {
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .footer-col ul a {
+      color: #888;
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s
+    }
+
+    .footer-col ul a:hover {
+      color: var(--yellow-light)
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .footer-bottom p {
+      font-size: .85rem;
+      color: #888
+    }
+
+    /* ===== FADE IN ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .55s ease, transform .55s ease
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    /* ===== RESPONSIVE ===== */
+
+    /* Tablet landscape */
+    @media(max-width:1100px) {
+      .packages-home-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .programs-row {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .team-row {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px
+      }
+
+      .events-grid,
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    /* Tablet portrait */
+    @media(max-width:900px) {
+
+      .packages-home,
+      .programs-home,
+      .team-home,
+      .events-home,
+      .news-home,
+      .cta-home {
+        padding: 56px 28px
+      }
+
+      .packages-home-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .programs-row {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .team-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px
+      }
+
+      .events-grid,
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .hero-banner-content {
+        padding: 56px 32px
+      }
+
+      footer {
+        padding: 56px 28px 28px
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px
+      }
+
+      .cta-home {
+        padding: 60px 28px
+      }
+    }
+
+    /* Mobile large */
+    @media(max-width:700px) {
+
+      .packages-home,
+      .programs-home,
+      .team-home,
+      .events-home,
+      .news-home {
+        padding: 44px 16px
+      }
+
+      .cta-home {
+        padding: 52px 20px
+      }
+
+      .packages-home-grid {
+        grid-template-columns: 1fr
+      }
+
+      .programs-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px
+      }
+
+      .team-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px
+      }
+
+      .events-grid,
+      .news-grid {
+        grid-template-columns: 1fr
+      }
+
+      .member-photo-circle {
+        width: 90px;
+        height: 90px
+      }
+
+      .member-info h4 {
+        font-size: .95rem
+      }
+
+      .member-info .role {
+        font-size: .75rem
+      }
+
+      footer {
+        padding: 40px 16px 20px
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px
+      }
+    }
+
+    /* Mobile small */
+    @media(max-width:480px) {
+
+      .packages-home,
+      .programs-home,
+      .team-home,
+      .events-home,
+      .news-home {
+        padding: 36px 14px
+      }
+
+      .cta-home {
+        padding: 44px 16px
+      }
+
+      .packages-home-grid {
+        grid-template-columns: 1fr
+      }
+
+      .programs-row {
+        grid-template-columns: 1fr;
+        gap: 12px
+      }
+
+      .team-row {
+        grid-template-columns: 1fr;
+        gap: 16px
+      }
+
+      .events-grid,
+      .news-grid {
+        grid-template-columns: 1fr
+      }
+
+      .section-head {
+        margin-bottom: 32px
+      }
+
+      .section-head h2 {
+        font-size: 1.6rem
+      }
+
+      .cta-home h2 {
+        font-size: 1.7rem
+      }
+
+      .member-photo-area {
+        padding-top: 24px
+      }
+
+      .member-photo-circle {
+        width: 100px;
+        height: 100px
+      }
+
+      footer {
+        padding: 32px 14px 16px
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px
+      }
+
+      .hero-banner {
+        min-height: 60vh
+      }
+
+      .hero-banner-content {
+        padding: 40px 16px
+      }
+
+      .hero-banner-content h1 {
+        font-size: 1.6rem
+      }
+
+      .hero-banner-content p {
+        font-size: .9rem
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 10px
+      }
+
+      .btn-hero-primary,
+      .btn-hero-secondary {
+        justify-content: center;
+        padding: 13px 20px
+      }
+
+      .sub-nav-links a {
+        padding: 12px 10px;
+        font-size: .78rem
+      }
+
+      .top-nav-inner {
+        padding: 0 12px;
+        gap: 8px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== TOP NAV ========== -->
+  <div class="top-nav">
+    <div class="top-nav-inner">
+      <a href="index.html" class="nav-logo" title="Be Happy - Home">
+        <img src="./Assets/WhatsApp-Image-2025-01-16-at-07.59.36_f1f82ec6.jpg" alt="">
+      </a>
+      <div class="nav-search">
+        <span class="search-icon"><i class="bi bi-search"></i></span>
+        <input type="text" placeholder="Search for Programs, Events, Retreats..." />
+      </div>
+      <div class="nav-location">
+        <span>&#128205;</span>
+        <span>Ahmedabad</span>
+        <span style="font-size:.7rem;color:#888;margin-left:2px">&#9660;</span>
+      </div>
+      <div class="nav-right">
+        <a href="contact.html" class="btn-login">Login</a>
+        <a href="contact.html" class="btn-signup">Register</a>
+        <button class="nav-hamburger" id="accountBtn" aria-label="Account Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB NAV -->
+  <nav class="sub-nav">
+    <ul class="sub-nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="package.html">Packages</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="science.html">Science</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- DRAWER OVERLAY -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- ACCOUNT DRAWER -->
+  <div class="account-drawer" id="accountDrawer">
+    <button class="drawer-close" id="drawerClose">&#10005;</button>
+    <div class="drawer-header">
+      <h3>Hey!</h3>
+      <div class="drawer-promo">
+        <div class="drawer-promo-icon">&#127873;</div>
+        <div class="drawer-promo-text">Unlock special offers &amp;<br />great benefits</div>
+        <a href="contact.html" class="btn-drawer-auth">Login / Register</a>
+      </div>
+    </div>
+    <div class="drawer-menu">
+      <a href="#" class="drawer-item">
+        <div class="drawer-item-icon">&#128276;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Notifications</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="#" class="drawer-item locked">
+        <div class="drawer-item-icon">&#128197;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Your Orders</div>
+          <div class="drawer-item-sub">View all your bookings &amp; purchases</div>
+        </div><span class="drawer-item-arrow">&#128274;</span>
+      </a>
+      <a href="programs.html" class="drawer-item">
+        <div class="drawer-item-icon">&#127775;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">My Programs</div>
+          <div class="drawer-item-sub">Enrolled &amp; completed programs</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="package.html" class="drawer-item">
+        <div class="drawer-item-icon">&#127873;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">My Packages</div>
+          <div class="drawer-item-sub">View your wellness packages</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="#" class="drawer-item">
+        <div class="drawer-item-icon">&#128172;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Help &amp; Support</div>
+          <div class="drawer-item-sub">View commonly asked queries</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="#" class="drawer-item locked">
+        <div class="drawer-item-icon">&#9881;&#65039;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Account &amp; Settings</div>
+          <div class="drawer-item-sub">Profile, Payments &amp; More</div>
+        </div><span class="drawer-item-arrow">&#128274;</span>
+      </a>
+      <a href="#" class="drawer-item">
+        <div class="drawer-item-icon">&#11088;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Rewards</div>
+          <div class="drawer-item-sub">View your rewards &amp; unlock new ones</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="contact.html" class="drawer-item">
+        <div class="drawer-item-icon">&#127758;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Book a Session</div>
+          <div class="drawer-item-sub">Book your intro talk or program</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ========== HERO BANNER ========== -->
+  <section class="hero-banner">
+    <div class="hero-banner-bg">
+
+      <!-- Apna banner image add karna ho to neeche wali line uncomment karo: -->
+      <img src="./Assets/person-practicing-yoga-meditation-nature-sunset-sunrise.jpg" alt="Be Happy Banner">
+
+    </div>
+    <div class="hero-banner-overlay"></div>
+    <div class="hero-banner-content fade-in">
+      <span class="hero-tag">&#10022; Art of Living Inspired</span>
+      <h1>Calm mind, clear path..</h1>
+      <!-- <p>Breathwork, meditation, yoga, and community for stress-free living. Join a supportive wellness community
+        inspired by Art of Living techniques.</p> -->
+      <div class="hero-buttons">
+        <a href="contact.html" class="btn-hero-primary">Book Free Intro Talk &rarr;</a>
+        <a href="about.html" class="btn-hero-secondary">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-dots">
+      <div class="hero-dot active"></div>
+      <div class="hero-dot"></div>
+      <div class="hero-dot"></div>
+    </div>
+  </section>
+
+  <!-- ========== PACKAGES ========== -->
+  <!-- ========== PACKAGES SECTION ========== -->
+  <section class="pkg-sec">
+    <div class="pkg-head">
+      <h2>Personalized wellness starts here</h2>
+      <p>Simple paths to better living</p>
+    </div>
+
+    <div class="pkg-row">
+
+      <div class="pkg-card">
+        <div class="pkg-img cream-bg">
+          <!-- Apni image yahan add karo: -->
+          <img src="./Assets/milan-popovic-Zf0-90SpDD0-unsplash.jpg" alt="">
+        </div>
+        <div class="pkg-top cream">
+          <div class="pkg-icon">🌿</div>
+          <div>
+            <h3>Self Development</h3>
+          </div>
+        </div>
+        <div class="pkg-body">
+          <ul class="pkg-feats">
+            <!-- <li>SKY Breath Workshop</li>
+            <li>Sahaj Samadhi Meditation</li>
+            <li>3 months Satsang access</li> -->
+          </ul>
+          <a href="package.html" class="pkg-btn pkg-btn-yellow">Know More <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="pkg-card">
+        <div class="pkg-img dark-bg">
+          <!-- Apni image yahan add karo: -->
+          <img src="./Assets/vitaly-gariev-Va7bYm1Wkio-unsplash.jpg" alt="">
+        </div>
+        <div class="pkg-top dark">
+          <div class="pkg-icon">⭐</div>
+          <div>
+            <span class="pkg-badge">Most Popular</span>
+            <h3>Premium Program</h3>
+          </div>
+        </div>
+        <div class="pkg-body">
+          <ul class="pkg-feats">
+            <!-- <li>SKY Breath + Meditation</li>
+            <li>Sleep &amp; Anxiety Protocol</li>
+            <li>6 months Satsang &amp; Kirtan</li> -->
+          </ul>
+          <a href="package.html" class="pkg-btn pkg-btn-green">Enquire <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="pkg-card">
+        <div class="pkg-img dark-bg">
+          <!-- Apni image yahan add karo: -->
+          <img src="./Assets/pic-kaca-9_en9uPPf4c-unsplash.jpg" alt="">
+        </div>
+        <div class="pkg-top cream">
+          <div class="pkg-icon">♾️</div>
+          <div>
+            <span class="pkg-badge">Signature</span>
+            <h3>Walking into Infinity</h3>
+          </div>
+        </div>
+        <div class="pkg-body">
+          <ul class="pkg-feats">
+            <!-- <li>Full Advanced Premium path</li>
+            <li>Annual Silent Retreat</li>
+            <li>Lifetime membership</li> -->
+          </ul>
+          <a href="package.html" class="pkg-btn pkg-btn-yellow">Begin Journey <span>→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="wp-sec">
+    <div class="wp-head">
+      <div class="wp-label">What We Offer</div>
+      <h2>Our Wellness Programs</h2>
+      <p>Evidence-based practices for every stage of your journey</p>
+    </div>
+    <div class="wp-row">
+
+      <div class="wc">
+        <div class="wc-img bg1">
+          <img src="./Assets/kathy-cat-5uV4EHJm53o-unsplash.jpg" alt="Intro Talk">
+          <span class="wc-tag">Free</span>
+        </div>
+        <div class="wc-body">
+          <h3>Intro Talk</h3>
+          <p>A free 1-hour session to experience breathwork and meditation firsthand.</p>
+          <a href="programs.html" class="wc-btn btn-y">Reserve <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="wc">
+        <div class="wc-img bg2">
+          <img src="./Assets/gaynella-mckenney-EXQjXRXHKXc-unsplash.jpg" alt="SKY Breath">
+          <span class="wc-tag">Beginner</span>
+        </div>
+        <div class="wc-body">
+          <h3>SKY Breath Workshop</h3>
+          <p>Clinically proven breathing program to reduce stress and boost energy.</p>
+          <a href="programs.html" class="wc-btn btn-g">Learn More <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="wc">
+        <div class="wc-img bg3">
+          <img src="./Assets/aaron-blanco-tejedor-QSQJA4BfHXk-unsplash.jpg" alt="Sahaj Samadhi">
+          <span class="wc-tag">Intermediate</span>
+        </div>
+        <div class="wc-body">
+          <h3>Sahaj Samadhi</h3>
+          <p>Effortless meditation for deep rest, clarity and lasting inner peace.</p>
+          <a href="programs.html" class="wc-btn btn-d">Explore <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="wc">
+        <div class="wc-img bg4">
+          <img src="./Assets/zhangzui-jsR_Tz2cQk4-unsplash.jpg" alt="Sleep & Anxiety">
+          <span class="wc-tag">Focus</span>
+        </div>
+        <div class="wc-body">
+          <h3>Sleep &amp; Anxiety</h3>
+          <p>Breathwork techniques to calm the nervous system and restore sleep.</p>
+          <a href="programs.html" class="wc-btn btn-o">Know More <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="wc">
+        <div class="wc-img bg5">
+          <img src="./Assets/arjun-baroi-J5X9Mk2ShUw-unsplash.jpg" alt="Silent Retreat">
+          <span class="wc-tag">Advanced</span>
+        </div>
+        <div class="wc-body">
+          <h3>Silent Retreat</h3>
+          <p>4-day residential retreat blending deep meditation and breathwork.</p>
+          <a href="programs.html" class="wc-btn btn-p">Join <span>→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========== PROMO BANNER ========== -->
+  <div class="promo-banner">
+    <img src="./Assets/seven-colors-P8LhbUsCEvU-unsplash.jpg" alt="Be Happy Banner" class="promo-banner-bg" />
+    <div class="promo-banner-overlay"></div>
+    <div class="promo-banner-content">
+      <div class="promo-left">
+        <div class="promo-logo-text">Be<span>Happy</span></div>
+        <div class="promo-logo-sub">TUTORIALS</div>
+      </div>
+      <div class="promo-divider"></div>
+      <div class="promo-right">
+        <p class="promo-tagline">Transform Your Life. Anytime. Anywhere.</p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ========== EVENTS ========== -->
+  <section class="events-home">
+    <div class="events-home-watermark">Events nearby</div>
+    <div class="section-head fade-in">
+      <span class="sec-label">Join Us</span>
+      <h2>Upcoming Events</h2>
+      <p>Join us at our next in-person and online wellness events across Ahmedabad and Gujarat.</p>
+    </div>
+    <div class="events-grid">
+      <div class="event-card fade-in">
+        <div class="event-img">
+          <div class="event-date-badge"><span class="day">28</span><span class="month">Mar</span></div>
+          <!-- Add image:  -->
+          <img src="./Assets/assorted-herbal-bowls-stockcake.webp" alt="Weekly Intro Talk">
+          &#129337;
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Free</span>
+          <h4>Weekly Intro Talk</h4>
+          <p>Experience meditation and breathwork in a free 1-hour introductory session. Open to all.</p>
+          <div class="event-meta">&#128205; Ahmedabad &nbsp;&bull;&nbsp; &#128336; 6:00 PM</div>
+          <a href="events.html" class="btn-event">Register Free &rarr;</a>
+        </div>
+      </div>
+      <div class="event-card fade-in">
+        <div class="event-img">
+          <div class="event-date-badge"><span class="day">04</span><span class="month">Apr</span></div>
+          <!-- Add image: -->
+          <img src="./Assets/assorted-herbal-bowls-stockcake.webp" alt="SKY Breath Workshop">
+          &#127788;&#65039;
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Workshop</span>
+          <h4>SKY Breath Weekend Workshop</h4>
+          <p>3-day transformational breathwork program. Reduce stress, improve sleep, and find inner calm.</p>
+          <div class="event-meta">&#128205; Ahmedabad &nbsp;&bull;&nbsp; &#128336; 9:00 AM</div>
+          <a href="events.html" class="btn-event">Book Now &rarr;</a>
+        </div>
+      </div>
+      <div class="event-card fade-in">
+        <div class="event-img">
+          <div class="event-date-badge"><span class="day">18</span><span class="month">Apr</span></div>
+          <!-- Add image:  -->
+          <img src="./Assets/assorted-herbal-bowls-stockcake.webp" alt="Silent Retreat">
+          &#127956;
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Retreat</span>
+          <h4>4-Day Silent Retreat</h4>
+          <p>Immersive residential retreat combining silence, advanced meditation and breathwork.</p>
+          <div class="event-meta">&#128205; Gujarat &nbsp;&bull;&nbsp; &#128336; 4 Days</div>
+          <a href="events.html" class="btn-event">Enquire &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;position:relative;z-index:1">
+      <a href="events.html" class="btn-hero-primary" style="background:var(--green-dark);color:#fff;">View All Events
+        &rarr;</a>
+    </div>
+  </section>
+
+
+
+  <!-- ========== TEAM ========== -->
+  <section class="team-home">
+
+    <div class="team-home-watermark">Volunteers</div>
+
+    <span class="scatter" style="top:9%;left:4%;color:#e74c3c;font-size:1.1rem;opacity:.7">✕</span>
+    <span class="scatter" style="top:9%;left:26%;color:#2D7A2D;font-size:.95rem;opacity:.6">○</span>
+    <span class="scatter" style="top:9%;left:55%;color:#e74c3c;font-size:.95rem;opacity:.6">✕</span>
+    <span class="scatter" style="top:9%;right:4%;color:#2D7A2D;font-size:.95rem;opacity:.6">○</span>
+    <span class="scatter" style="top:50%;left:1.5%;color:#E6A800;font-size:.95rem;opacity:.6">○</span>
+    <span class="scatter" style="top:50%;left:35%;color:#E6A800;font-size:.85rem;opacity:.5">✕</span>
+    <span class="scatter" style="top:50%;right:10%;color:#2D7A2D;font-size:.85rem;opacity:.5">○</span>
+    <span class="scatter" style="bottom:9%;right:3%;color:#e74c3c;font-size:.95rem;opacity:.6">✕</span>
+
+    <div class="team-section-head">
+      <span class="team-sec-label">Join Us</span>
+      <h2>Meet The Team</h2>
+      <p>Our certified teachers bring years of dedicated practice and a deep passion for guiding others on their
+        wellness journey.</p>
+    </div>
+
+    <div class="team-row">
+
+      <div class="team-member-card">
+        <div class="member-photo-area">
+          <img src="ananya.jpg" alt="Ananya Sharma" onerror="this.style.display='none'" />
+          <svg class="member-photo-placeholder" viewBox="0 0 110 160" fill="none">
+            <ellipse cx="55" cy="48" rx="27" ry="27" fill="#fff" />
+            <ellipse cx="55" cy="145" rx="50" ry="40" fill="#fff" />
+          </svg>
+          <span class="member-role-tag">Lead Teacher</span>
+        </div>
+        <div class="member-info">
+          <h4>Ananya Sharma</h4>
+          <div class="role">Lead Meditation Teacher</div>
+          <div class="member-divider"></div>
+          <span class="exp">12 yrs experience</span>
+          <div class="member-social">
+            <a href="#" class="social-btn fb">f</a>
+            <a href="#" class="social-btn tw">𝕏</a>
+            <a href="#" class="social-btn li">in</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-member-card">
+        <div class="member-photo-area">
+          <img src="rahul.jpg" alt="Rahul Mehta" onerror="this.style.display='none'" />
+          <svg class="member-photo-placeholder" viewBox="0 0 110 160" fill="none">
+            <ellipse cx="55" cy="48" rx="27" ry="27" fill="#fff" />
+            <ellipse cx="55" cy="145" rx="50" ry="40" fill="#fff" />
+          </svg>
+          <span class="member-role-tag">Breathwork</span>
+        </div>
+        <div class="member-info">
+          <h4>Rahul Mehta</h4>
+          <div class="role">Breathwork Facilitator</div>
+          <div class="member-divider"></div>
+          <span class="exp">8 yrs experience</span>
+          <div class="member-social">
+            <a href="#" class="social-btn fb">f</a>
+            <a href="#" class="social-btn tw">𝕏</a>
+            <a href="#" class="social-btn li">in</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-member-card">
+        <div class="member-photo-area">
+          <img src="priya.jpg" alt="Priya Nair" onerror="this.style.display='none'" />
+          <svg class="member-photo-placeholder" viewBox="0 0 110 160" fill="none">
+            <ellipse cx="55" cy="48" rx="27" ry="27" fill="#fff" />
+            <ellipse cx="55" cy="145" rx="50" ry="40" fill="#fff" />
+          </svg>
+          <span class="member-role-tag">Yoga &amp; Wellness</span>
+        </div>
+        <div class="member-info">
+          <h4>Priya Nair</h4>
+          <div class="role">Yoga &amp; Wellness Coach</div>
+          <div class="member-divider"></div>
+          <span class="exp">9 yrs experience</span>
+          <div class="member-social">
+            <a href="#" class="social-btn fb">f</a>
+            <a href="#" class="social-btn tw">𝕏</a>
+            <a href="#" class="social-btn li">in</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="team-view-all">
+      <a href="team.html" class="team-view-btn">
+        View Full Team <span class="arr">→</span>
+      </a>
+    </div>
+
+  </section>
+
+
+
+  <!-- ========== RECENT NEWS ========== -->
+  <section class="news-home">
+    <div class="news-home-watermark">News</div>
+    <div class="section-head fade-in">
+      <span class="sec-label">Blog &amp; Article</span>
+      <h2>Recent News</h2>
+      <p>Insights, stories, and research from the Be Happy community and wellness world.</p>
+    </div>
+    <div class="news-grid">
+      <div class="news-card fade-in">
+        <div class="news-img c1"></div>
+        <div class="news-body">
+          <span class="news-cat">Breathwork</span>
+          <h4>How Sudarshan Kriya Transforms Your Nervous System</h4>
+          <p>Research shows rhythmic breathing creates measurable shifts in the autonomic nervous system.</p>
+          <div class="news-meta">March 10, 2026 &bull; 5 min read</div>
+          <a href="blog.html" class="btn-news">Read More &rarr;</a>
+        </div>
+      </div>
+      <div class="news-card fade-in">
+        <div class="news-img c2">&#127758;</div>
+        <div class="news-body">
+          <span class="news-cat">Community</span>
+          <h4>500 Members and Growing — Our Journey So Far</h4>
+          <p>From a small gathering in Ahmedabad to a thriving wellness community across Gujarat.</p>
+          <div class="news-meta">March 5, 2026 &bull; 4 min read</div>
+          <a href="blog.html" class="btn-news">Read More &rarr;</a>
+        </div>
+      </div>
+      <div class="news-card fade-in">
+        <div class="news-img c3">&#128214;</div>
+        <div class="news-body">
+          <span class="news-cat">Science</span>
+          <h4>New Study Links Meditation to Reduced Cortisol Levels</h4>
+          <p>A 2025 meta-analysis of 3,500+ participants confirms meditation significantly reduces stress hormones.</p>
+          <div class="news-meta">Feb 28, 2026 &bull; 6 min read</div>
+          <a href="blog.html" class="btn-news">Read More &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;position:relative;z-index:1">
+      <a href="blog.html" class="btn-hero-primary" style="background:var(--yellow);color:var(--black);">View All
+        Articles &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="cta-home">
+    <h2>Begin Your Journey Today</h2>
+    <p>Take the first step towards a calmer, happier, and more fulfilled life. Join our free intro talk.</p>
+    <div class="cta-buttons">
+      <a href="contact.html" class="btn-cta-primary">Book Free Intro Talk &rarr;</a>
+      <a href="programs.html" class="btn-cta-secondary">Explore Programs</a>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo"><img src="./Assets/WhatsApp-Image-2025-01-16-at-07.59.36_f1f82ec6.jpg"
+            alt=""></a>
+        <p>A spiritual wellness community inspired by Art of Living, dedicated to helping you live a stress-free, joyful
+          life.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <ul>
+          <li><a href="programs.html">Intro Talk</a></li>
+          <li><a href="programs.html">Sky Breath Workshop</a></li>
+          <li><a href="programs.html">Sahaj Samadhi</a></li>
+          <li><a href="programs.html">Silent Retreat</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="science.html">Science</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Be Happy Tutorials. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Account Drawer
+    const accountBtn = document.getElementById('accountBtn');
+    const accountDrawer = document.getElementById('accountDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const drawerClose = document.getElementById('drawerClose');
+    function openDrawer() { accountDrawer.classList.add('open'); drawerOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { accountDrawer.classList.remove('open'); drawerOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+    if (accountBtn) accountBtn.addEventListener('click', openDrawer);
+    if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+    if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+    // Sub-nav active
+    const pg2 = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.sub-nav-links a').forEach(a => { if (a.getAttribute('href') === pg2) a.classList.add('active') });
+    // Fade in
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }) }, { threshold: .08 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  </script>
+</body>
+
+</html>

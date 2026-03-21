@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Events – Be Happy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito:wght@300;400;600;700;800;900&display=swap');
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --yellow: #F5C518;
+      --yellow-dark: #E6A800;
+      --yellow-light: #FFD95A;
+      --yellow-pale: #FFFBEA;
+      --green: #2D7A2D;
+      --green-dark: #1F5C1F;
+      --green-light: #4CAF50;
+      --white: #ffffff;
+      --bg-section: #FFFBEA;
+      --text-dark: #1e2e1e;
+      --card-radius: 16px;
+      --black: #1e2e1e;
+      --black-soft: #2a3a2a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text-dark);
+      background: #fff;
+      overflow-x: hidden;
+      max-width: 100vw
+    }
+
+    /* NAVBAR */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: #fff;
+      border-bottom: 3px solid var(--yellow);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .08)
+    }
+
+    .top-nav-inner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 40px;
+      height: 68px
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 50%
+    }
+
+    .nav-logo-text {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1
+    }
+
+    .nav-logo-text span {
+      color: var(--green-dark)
+    }
+
+    .nav-search {
+      flex: 1;
+      max-width: 480px;
+      position: relative
+    }
+
+    .nav-search input {
+      width: 100%;
+      padding: 10px 16px 10px 42px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 24px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .92rem;
+      color: #333;
+      background: #f8f8f8;
+      outline: none;
+      transition: border-color .2s, background .2s
+    }
+
+    .nav-search input:focus {
+      border-color: var(--yellow);
+      background: #fff
+    }
+
+    .nav-search .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      pointer-events: none;
+      font-size: 1rem
+    }
+
+    .nav-location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 1.5px solid #e0e0e0;
+      background: #f8f8f8;
+      transition: border-color .2s;
+      flex-shrink: 0;
+      white-space: nowrap;
+      font-size: .88rem;
+      font-weight: 600;
+      color: #444;
+      user-select: none;
+      margin-left: 40rem
+    }
+
+    .nav-location:hover {
+      border-color: var(--yellow)
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+      flex-shrink: 0
+    }
+
+    .btn-login {
+      background: transparent;
+      color: var(--green-dark);
+      border: 2px solid var(--green-dark);
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      text-decoration: none;
+      white-space: nowrap
+    }
+
+    .btn-login:hover {
+      background: var(--green-dark);
+      color: #fff
+    }
+
+    .btn-signup {
+      background: var(--yellow);
+      color: var(--black);
+      border: none;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s;
+      text-decoration: none;
+      white-space: nowrap
+    }
+
+    .btn-signup:hover {
+      background: var(--yellow-dark)
+    }
+
+    .nav-hamburger {
+      background: none;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      padding: 8px 10px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex-shrink: 0;
+      transition: border-color .2s
+    }
+
+    .nav-hamburger:hover {
+      border-color: var(--yellow)
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #444;
+      border-radius: 2px
+    }
+
+    .account-drawer {
+      position: fixed;
+      top: 0;
+      right: -340px;
+      width: 320px;
+      height: 100vh;
+      background: #fff;
+      z-index: 999;
+      box-shadow: -4px 0 24px rgba(0, 0, 0, .15);
+      transition: right .3s ease;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto
+    }
+
+    .account-drawer.open {
+      right: 0
+    }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 28, 18, .40);
+      z-index: 998;
+      display: none
+    }
+
+    .drawer-overlay.open {
+      display: block
+    }
+
+    .drawer-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid #f0f0f0
+    }
+
+    .drawer-header h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 16px
+    }
+
+    .drawer-promo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--yellow-pale);
+      border: 1.5px solid var(--yellow);
+      border-radius: 12px;
+      padding: 14px
+    }
+
+    .drawer-promo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0
+    }
+
+    .drawer-promo-text {
+      flex: 1;
+      font-size: .83rem;
+      color: var(--green-dark);
+      font-weight: 600;
+      line-height: 1.4
+    }
+
+    .btn-drawer-auth {
+      background: transparent;
+      color: var(--green-dark);
+      border: 2px solid var(--green-dark);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      flex-shrink: 0
+    }
+
+    .drawer-menu {
+      flex: 1;
+      padding: 8px 0
+    }
+
+    .drawer-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      border-bottom: 1px solid #f0f5f0;
+      cursor: pointer;
+      transition: background .15s;
+      text-decoration: none;
+      color: var(--text-dark)
+    }
+
+    .drawer-item:hover {
+      background: #fafafa
+    }
+
+    .drawer-item-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0
+    }
+
+    .drawer-item-title {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--text-dark)
+    }
+
+    .drawer-item-sub {
+      font-size: .78rem;
+      color: #999;
+      margin-top: 2px
+    }
+
+    .drawer-item-arrow {
+      margin-left: auto;
+      color: #ccc;
+      font-size: .85rem
+    }
+
+    .drawer-item.locked .drawer-item-title,
+    .drawer-item.locked .drawer-item-sub {
+      color: #bbb
+    }
+
+    .drawer-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #999;
+      padding: 4px 8px;
+      border-radius: 6px
+    }
+
+    .drawer-close:hover {
+      color: var(--text-dark)
+    }
+
+    .sub-nav {
+      background: #fff;
+      border-bottom: 2px solid #f0f0f0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none
+    }
+
+    .sub-nav::-webkit-scrollbar {
+      display: none
+    }
+
+    .sub-nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      flex-wrap: nowrap;
+      padding: 0 20px;
+      min-width: max-content
+    }
+
+    .sub-nav-links a {
+      text-decoration: none;
+      color: #555;
+      font-size: .88rem;
+      font-weight: 600;
+      padding: 13px 14px;
+      display: block;
+      border-bottom: 3px solid transparent;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+      flex-shrink: 0
+    }
+
+    .sub-nav-links a:hover {
+      color: var(--green-dark)
+    }
+
+    .sub-nav-links a.active {
+      color: var(--green-dark);
+      border-bottom-color: var(--yellow)
+    }
+
+    @media(max-width:900px) {
+      .top-nav-inner {
+        padding: 0 16px;
+        gap: 10px
+      }
+
+      .nav-search {
+        max-width: none;
+        flex: 1
+      }
+
+      .nav-location {
+        display: none
+      }
+
+      .btn-login,
+      .btn-signup {
+        display: none
+      }
+
+      .sub-nav-links {
+        padding: 0 12px
+      }
+
+      .sub-nav-links a {
+        padding: 12px 11px;
+        font-size: .84rem
+      }
+    }
+
+    @media(max-width:480px) {
+      .sub-nav-links a {
+        padding: 11px 10px;
+        font-size: .8rem
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1a2e1a;
+      color: #ccc;
+      padding: 60px clamp(16px, 5vw, 80px) 30px
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px
+    }
+
+    .footer-brand p {
+      font-size: .9rem;
+      line-height: 1.7;
+      color: #aaa;
+      max-width: 260px;
+      margin-top: 12px
+    }
+
+    .footer-logo {
+      color: #fff;
+      line-height: 1;
+      display: inline-block;
+      text-decoration: none
+    }
+
+    .footer-logo img {
+      height: 70px;
+      width: 70px;
+      border-radius: 50%
+    }
+
+    .footer-col h5 {
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .footer-col ul a {
+      color: #888;
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s
+    }
+
+    .footer-col ul a:hover {
+      color: var(--yellow-light)
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #2a4a2a;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .footer-bottom p {
+      font-size: .85rem;
+      color: #888
+    }
+
+    @media(max-width:900px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px
+      }
+
+      footer {
+        padding: 48px clamp(16px, 4vw, 40px) 24px
+      }
+    }
+
+    @media(max-width:480px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px
+      }
+
+      footer {
+        padding: 36px 16px 20px
+      }
+    }
+
+    /* COMMON */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: .78rem;
+      color: var(--yellow-dark);
+      font-weight: 800;
+      margin-bottom: 10px;
+      display: block
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px
+    }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700
+    }
+
+    .section-header p {
+      color: #777;
+      margin-top: 12px;
+      font-size: .97rem;
+      max-width: 520px;
+      margin-inline: auto;
+      line-height: 1.6
+    }
+
+    .btn-primary {
+      background: var(--green-dark);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 26px;
+      font-size: .95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Nunito', sans-serif
+    }
+
+    .btn-primary:hover {
+      background: var(--green)
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-dark);
+      border: 1.5px solid #ccc;
+      border-radius: 10px;
+      padding: 13px 26px;
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color .2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Nunito', sans-serif
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--yellow);
+      color: var(--green-dark)
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(135deg, #0f2214 0%, #1a3020 50%, #0f1a10 100%);
+      padding: 48px clamp(20px, 5vw, 80px) 40px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(10, 30, 20, .65) 0%, rgba(0, 0, 0, .2) 100%);
+      z-index: 1
+    }
+
+    .page-hero-inner {
+      position: relative;
+      z-index: 2
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      opacity: .35;
+      z-index: 0
+    }
+
+    .breadcrumb {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .5);
+      margin-bottom: 14px
+    }
+
+    .breadcrumb a {
+      color: var(--yellow);
+      text-decoration: none;
+      font-weight: 600
+    }
+
+    .breadcrumb a:hover {
+      color: var(--yellow-light)
+    }
+
+    .breadcrumb span {
+      margin: 0 6px;
+      color: rgba(255, 255, 255, .3)
+    }
+
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.2
+    }
+
+    .page-hero p {
+      color: rgba(255, 255, 255, .75);
+      font-size: .97rem;
+      max-width: 560px;
+      line-height: 1.65
+    }
+
+    /* FILTER BAR */
+    .filter-bar-wrap {
+      background: #fff;
+      border-bottom: 1px solid #f0f0f0;
+      padding: 0 clamp(16px, 4vw, 60px);
+      position: sticky;
+      top: 68px;
+      z-index: 100;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none
+    }
+
+    .filter-bar-wrap::-webkit-scrollbar {
+      display: none
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      align-items: center
+    }
+
+    .filter-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 14px 20px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      color: #666;
+      cursor: pointer;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+      text-decoration: none
+    }
+
+    .filter-btn:hover {
+      color: var(--green-dark)
+    }
+
+    .filter-btn.active {
+      color: var(--green-dark);
+      border-bottom-color: var(--yellow)
+    }
+
+    /* EVENTS */
+    .events-main {
+      padding: 32px clamp(16px, 4vw, 60px) 60px
+    }
+
+    .events-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text-dark)
+    }
+
+    .events-grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 22px;
+      margin-bottom: 52px
+    }
+
+    .event-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1.5px solid #f0f0e8;
+      overflow: hidden;
+      transition: transform .22s, box-shadow .22s
+    }
+
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, .1)
+    }
+
+    .event-card-img {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--yellow-pale), #ffe090)
+    }
+
+    .event-card-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0
+    }
+
+    .event-emoji {
+      font-size: 2.8rem;
+      position: relative;
+      z-index: 1
+    }
+
+    .event-card-img img+.event-emoji {
+      opacity: .15
+    }
+
+    .event-date-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--yellow);
+      color: var(--black);
+      border-radius: 8px;
+      padding: 5px 9px;
+      text-align: center;
+      font-weight: 800;
+      line-height: 1.2;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+      z-index: 2
+    }
+
+    .event-date-badge .day {
+      font-size: 1.2rem;
+      display: block
+    }
+
+    .event-date-badge .month {
+      font-size: .62rem;
+      text-transform: uppercase;
+      letter-spacing: .5px
+    }
+
+    .event-type-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, .65);
+      color: #fff;
+      font-size: .65rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      z-index: 2
+    }
+
+    .event-card-body {
+      padding: 18px 18px 22px
+    }
+
+    .event-tag {
+      display: inline-block;
+      background: var(--yellow-pale);
+      color: var(--yellow-dark);
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-size: .72rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      border: 1px solid var(--yellow)
+    }
+
+    .event-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text-dark);
+      line-height: 1.3
+    }
+
+    .event-card p {
+      color: #777;
+      font-size: .82rem;
+      line-height: 1.5;
+      margin-bottom: 10px
+    }
+
+    .event-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .76rem;
+      color: #aaa;
+      margin-bottom: 14px
+    }
+
+    .btn-event {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--green-dark);
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      padding: 9px 16px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s
+    }
+
+    .btn-event:hover {
+      background: var(--green)
+    }
+
+    .btn-event.free {
+      background: var(--yellow);
+      color: var(--black)
+    }
+
+    .btn-event.free:hover {
+      background: var(--yellow-dark)
+    }
+
+    .btn-event.online {
+      background: #1a1e48;
+      color: #fff
+    }
+
+    .btn-event.online:hover {
+      background: #2a2e58
+    }
+
+    /* SECTION DIVIDER */
+    .events-section-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 8px 0 24px
+    }
+
+    .events-section-divider h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      white-space: nowrap
+    }
+
+    .events-section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1.5px;
+      background: #f0f0e8
+    }
+
+    /* RECURRING */
+    .recurring-sec {
+      padding: 48px clamp(16px, 4vw, 60px);
+      background: #fafaf8
+    }
+
+    .recurring-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 28px
+    }
+
+    .recurring-card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1.5px solid #f0f0ea;
+      padding: 22px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: transform .2s, box-shadow .2s
+    }
+
+    .recurring-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .08)
+    }
+
+    .recurring-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: var(--yellow-pale);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .recurring-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: .97rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--text-dark)
+    }
+
+    .recurring-card p {
+      color: #777;
+      font-size: .82rem;
+      line-height: 1.55;
+      margin-bottom: 8px
+    }
+
+    .schedule {
+      font-size: .76rem;
+      color: var(--green-dark);
+      font-weight: 600
+    }
+
+    /* CTA STRIP */
+    .events-cta {
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-dark));
+      padding: 44px clamp(16px, 5vw, 80px);
+      text-align: center;
+      margin-top: 0
+    }
+
+    .events-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 10px
+    }
+
+    .events-cta p {
+      color: var(--black-soft);
+      font-size: .95rem;
+      max-width: 460px;
+      margin: 0 auto 22px;
+      line-height: 1.65
+    }
+
+    .events-cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    .btn-cta-dark {
+      background: var(--black);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 26px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .92rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: background .2s
+    }
+
+    .btn-cta-dark:hover {
+      background: #2a3a2a
+    }
+
+    .btn-cta-outline {
+      background: transparent;
+      color: var(--black);
+      border: 2px solid var(--black);
+      border-radius: 10px;
+      padding: 13px 26px;
+      font-family: 'Nunito', sans-serif;
+      font-size: .92rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all .2s
+    }
+
+    .btn-cta-outline:hover {
+      background: var(--black);
+      color: #fff
+    }
+
+    @media(max-width:600px) {
+      .events-grid-cards {
+        grid-template-columns: 1fr
+      }
+
+      .recurring-grid {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- TOP NAV -->
+  <div class="top-nav">
+    <div class="top-nav-inner">
+      <a href="index.html" class="nav-logo" title="Be Happy - Home">
+        <img src="./Assets/WhatsApp-Image-2025-01-16-at-07.59.36_f1f82ec6.jpg" alt="Be Happy"
+          onerror="this.style.display='none'" />
+        <span class="nav-logo-text" style="display:none">Be<span>Happy</span></span>
+      </a>
+      <div class="nav-search">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" placeholder="Search for Programs, Events, Retreats..." />
+      </div>
+      <div class="nav-location">
+        <span>&#128205;</span><span>Ahmedabad</span>
+        <span style="font-size:.7rem;color:#888;margin-left:2px">&#9660;</span>
+      </div>
+      <div class="nav-right">
+        <a href="contact.html" class="btn-login">Login</a>
+        <a href="contact.html" class="btn-signup">Register</a>
+        <button class="nav-hamburger" id="accountBtn" aria-label="Account Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB NAV -->
+  <nav class="sub-nav">
+    <ul class="sub-nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="package.html">Packages</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="science.html">Science</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- DRAWER -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="account-drawer" id="accountDrawer">
+    <button class="drawer-close" id="drawerClose">&#10005;</button>
+    <div class="drawer-header">
+      <h3>Hey!</h3>
+      <div class="drawer-promo">
+        <div class="drawer-promo-icon">&#127873;</div>
+        <div class="drawer-promo-text">Unlock special offers &amp;<br />great benefits</div>
+        <a href="contact.html" class="btn-drawer-auth">Login / Register</a>
+      </div>
+    </div>
+    <div class="drawer-menu">
+      <a href="#" class="drawer-item">
+        <div class="drawer-item-icon">&#128276;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Notifications</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="#" class="drawer-item locked">
+        <div class="drawer-item-icon">&#128197;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Your Orders</div>
+          <div class="drawer-item-sub">View all your bookings &amp; purchases</div>
+        </div><span class="drawer-item-arrow">&#128274;</span>
+      </a>
+      <a href="programs.html" class="drawer-item">
+        <div class="drawer-item-icon">&#127775;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">My Programs</div>
+          <div class="drawer-item-sub">Enrolled &amp; completed programs</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="package.html" class="drawer-item">
+        <div class="drawer-item-icon">&#127873;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">My Packages</div>
+          <div class="drawer-item-sub">View your wellness packages</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="#" class="drawer-item">
+        <div class="drawer-item-icon">&#128172;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Help &amp; Support</div>
+          <div class="drawer-item-sub">View commonly asked queries</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="#" class="drawer-item locked">
+        <div class="drawer-item-icon">&#9881;&#65039;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Account &amp; Settings</div>
+          <div class="drawer-item-sub">Profile, Payments &amp; More</div>
+        </div><span class="drawer-item-arrow">&#128274;</span>
+      </a>
+      <a href="#" class="drawer-item">
+        <div class="drawer-item-icon">&#11088;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Rewards</div>
+          <div class="drawer-item-sub">View your rewards &amp; unlock new ones</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+      <a href="contact.html" class="drawer-item">
+        <div class="drawer-item-icon">&#127758;</div>
+        <div class="drawer-item-text">
+          <div class="drawer-item-title">Book a Session</div>
+          <div class="drawer-item-sub">Book your intro talk or program</div>
+        </div><span class="drawer-item-arrow">&#8250;</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <!-- ADD HERO IMAGE: src="hero-events.jpg" -->
+    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=80" alt="Hero Background"
+      class="page-hero-bg" onerror="this.style.display='none'" />
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Events</div>
+      <h1>Upcoming Events</h1>
+      <p>Join us for transformative sessions, workshops, and retreats. Reserve your seat and take the next step on your
+        wellness journey.</p>
+    </div>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar-wrap">
+    <div class="filter-bar">
+      <button class="filter-btn active">All Events</button>
+      <button class="filter-btn">Workshops</button>
+      <button class="filter-btn">Retreats</button>
+      <button class="filter-btn">Free</button>
+      <button class="filter-btn">Online</button>
+      <button class="filter-btn">Youth</button>
+      <button class="filter-btn">Community</button>
+    </div>
+  </div>
+
+  <!-- EVENTS MAIN -->
+  <div class="events-main">
+
+    <!-- ── SECTION: UPCOMING EVENTS ── -->
+    <h2 class="events-section-title">Upcoming Events</h2>
+    <div class="events-grid-cards">
+
+      <!-- CARD 1: Intro Talk -->
+      <div class="event-card fade-in">
+        <div class="event-card-img">
+          <!-- ADD IMAGE: src="event-intro-talk.jpg" -->
+          <img src="https://images.unsplash.com/photo-1560523159-4a9692d222ef?w=800&q=80" alt="Intro Talk"
+            onerror="this.style.display='none'" />
+          <span class="event-emoji">&#129337;</span>
+          <div class="event-date-badge"><span class="day">29</span><span class="month">Mar</span></div>
+          <span class="event-type-badge">Free</span>
+        </div>
+        <div class="event-card-body">
+          <span class="event-tag">Free</span>
+          <h4>Weekly Intro Talk</h4>
+          <p>Experience meditation and breathwork in a free 1-hour introductory session. Open to all ages and
+            backgrounds — no experience needed.</p>
+          <div class="event-meta">&#128205; Ahmedabad &nbsp;&bull;&nbsp; &#128336; 10:00 AM &nbsp;&bull;&nbsp; 1 Hour
+          </div>
+          <a href="contact.html" class="btn-event free">Register Free &rarr;</a>
+        </div>
+      </div>
+
+      <!-- CARD 2: SKY Breath Workshop -->
+      <div class="event-card fade-in">
+        <div class="event-card-img">
+          <!-- ADD IMAGE: src="event-sky-breath.jpg" -->
+          <img src="https://images.unsplash.com/photo-1616279969856-759f316a5ac1?w=800&q=80" alt="SKY Breath"
+            onerror="this.style.display='none'" />
+          <span class="event-emoji">&#127788;&#65039;</span>
+          <div class="event-date-badge"><span class="day">05</span><span class="month">Apr</span></div>
+          <span class="event-type-badge">Workshop</span>
+        </div>
+        <div class="event-card-body">
+          <span class="event-tag">Workshop</span>
+          <h4>SKY Breath Weekend Workshop</h4>
+          <p>The world-renowned, evidence-based SKY program — 3 days of transformational breathwork to dissolve stress,
+            boost energy, and restore calm.</p>
+          <div class="event-meta">&#128205; Ahmedabad &nbsp;&bull;&nbsp; &#128336; 9:00 AM &nbsp;&bull;&nbsp; 3 Days
+          </div>
+          <a href="contact.html" class="btn-event">Book Now &rarr;</a>
+        </div>
+      </div>
+
+      <!-- CARD 3: Sahaj Samadhi -->
+      <div class="event-card fade-in">
+        <div class="event-card-img">
+          <!-- ADD IMAGE: src="event-sahaj.jpg" -->
+          <img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=800&q=80" alt="Sahaj Samadhi"
+            onerror="this.style.display='none'" />
+          <span class="event-emoji">&#10024;</span>
+          <div class="event-date-badge"><span class="day">12</span><span class="month">Apr</span></div>
+          <span class="event-type-badge">Meditation</span>
+        </div>
+        <div class="event-card-body">
+          <span class="event-tag">Meditation</span>
+          <h4>Sahaj Samadhi Meditation Course</h4>
+          <p>Learn the effortless meditation technique that settles the mind into deep rest automatically — no
+            concentration or effort required.</p>
+          <div class="event-meta">&#128205; Ahmedabad &nbsp;&bull;&nbsp; &#128336; 6:00 PM &nbsp;&bull;&nbsp; 4 Sessions
+          </div>
+          <a href="contact.html" class="btn-event">Enquire &rarr;</a>
+        </div>
+      </div>
+
+      <!-- CARD 4: Silent Retreat -->
+      <div class="event-card fade-in">
+        <div class="event-card-img">
+          <!-- ADD IMAGE: src="event-retreat.jpg" -->
+          <img src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?w=800&q=80" alt="Silent Retreat"
+            onerror="this.style.display='none'" />
+          <span class="event-emoji">&#127956;</span>
+          <div class="event-date-badge"><span class="day">19</span><span class="month">Apr</span></div>
+          <span class="event-type-badge">Retreat</span>
+        </div>
+        <div class="event-card-body">
+          <span class="event-tag">Retreat</span>
+          <h4>4-Day Silent Retreat</h4>
+          <p>Immersive residential retreat combining extended silence, advanced meditation, and deep breathwork — a
+            profoundly transformative experience.</p>
+          <div class="event-meta">&#128205; Gujarat &nbsp;&bull;&nbsp; &#128336; 4 Days Residential</div>
+          <a href="contact.html" class="btn-event">Enquire &rarr;</a>
+        </div>
+      </div>
+
+      <!-- CARD 5: Kirtan Evening -->
+      <div class="event-card fade-in">
+        <div class="event-card-img">
+          <!-- ADD IMAGE: src="event-kirtan.jpg" -->
+          <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80" alt="Kirtan Evening"
+            onerror="this.style.display='none'" />
+          <span class="event-emoji">&#127926;</span>
+          <div class="event-date-badge"><span class="day">27</span><span class="month">Apr</span></div>
+          <span class="event-type-badge">Community</span>
+        </div>
+        <div class="event-card-body">
+          <span class="event-tag">Community</span>
+          <h4>Monthly Kirtan Evening</h4>
+          <p>An immersive evening of devotional music and chanting celebrating unity and human diversity. Followed by
+            prasad and community fellowship.</p>
+          <div class="event-meta">&#128205; Ahmedabad &nbsp;&bull;&nbsp; &#128336; 6:00 PM &nbsp;&bull;&nbsp; 2 Hours
+          </div>
+          <a href="contact.html" class="btn-event free">Join Free &rarr;</a>
+        </div>
+      </div>
+
+      <!-- CARD 6: Morning Breathwork Circle -->
+      <div class="event-card fade-in">
+        <div class="event-card-img">
+          <!-- ADD IMAGE: src="event-breathwork.jpg" -->
+          <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=800&q=80" alt="Breathwork Circle"
+            onerror="this.style.display='none'" />
+          <span class="event-emoji">&#127774;</span>
+          <div class="event-date-badge"><span class="day">03</span><span class="month">May</span></div>
+          <span class="event-type-badge">Online</span>
+        </div>
+        <div class="event-card-body">
+          <span class="event-tag">Online</span>
+          <h4>Morning Breathwork Circle</h4>
+          <p>Start your week with a guided breathwork session. For existing practitioners. Drop-in welcome — no booking
+            required.</p>
+          <div class="event-meta">&#128187; Online &nbsp;&bull;&nbsp; &#128336; 7:00 AM &nbsp;&bull;&nbsp; 45 min</div>
+          <a href="contact.html" class="btn-event online">Join Online &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── SECTION: YOUTH & CHILDREN EVENTS ── -->
+    <div class="events-section-divider">
+      <h3>&#127807; Youth &amp; Children Programs</h3>
+    </div>
+    <div class="events-grid-cards">
+
+      <!-- CARD 7: Art Excel -->
+      <div class="event-card fade-in">
+        <div class="event-card-img" style="background:linear-gradient(135deg,#fff0d0,#ffe090)">
+          <!-- ADD IMAGE: src="event-art-excel.jpg" -->
+          <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80" alt="Art Excel" onerror="this.style.display='none'" />
+          <span class="event-emoji">&#127775;</span>
+          <div class="event-date-badge"><span class="day">10</span><span class="month">May</span></div>
+          <span class="event-type-badge">Kids</span>
+        </div>
+        <div class="event-card-body">
+          <span class="event-tag">Ages 8–13</span>
+          <h4>Art Excel — SKY Kids Program</h4>
+          <p>A fun, interactive wellness program teaching children practical tools to build focus, handle emotions, and
+            grow with confidence and joy.</p>
+          <div class="event-meta">&#128205; Ahmedabad &nbsp;&bull;&nbsp; &#128336; 10:00 AM &nbsp;&bull;&nbsp; Weekend
+          </div>
+          <a href="contact.html" class="btn-event">Register &rarr;</a>
+        </div>
+      </div>
+
+      <!-- CARD 8: SKY Campus -->
+      <div class="event-card fade-in">
+        <div class="event-card-img" style="background:linear-gradient(135deg,#d0e8ff,#b0ccf0)">
+          <!-- ADD IMAGE: src="event-sky-campus.jpg" -->
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80" alt="SKY Campus" onerror="this.style.display='none'" />
+          <span class="event-emoji">&#127979;</span>
+          <div class="event-date-badge"><span class="day">17</span><span class="month">May</span></div>
+          <span class="event-type-badge">Youth</span>
+        </div>
+        <div class="event-card-body">
+          <span class="event-tag">College / University</span>
+          <h4>SKY Campus Happiness Program</h4>
+          <p>A holistic well-being program for students and young adults — combining breathwork, meditation, and
+            practical life skills to reduce anxiety and boost performance.</p>
+          <div class="event-meta">&#128205; Ahmedabad &nbsp;&bull;&nbsp; &#128336; 4:00 PM &nbsp;&bull;&nbsp; 3 Days
+          </div>
+          <a href="contact.html" class="btn-event">Learn More &rarr;</a>
+        </div>
+      </div>
+
+      <!-- CARD 9: Teen Wellness -->
+      <div class="event-card fade-in">
+        <div class="event-card-img" style="background:linear-gradient(135deg,#d0f0e0,#b0e0c8)">
+          <!-- ADD IMAGE: src="event-teen-wellness.jpg" -->
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="Teen Wellness" onerror="this.style.display='none'" />
+          <span class="event-emoji">&#129505;</span>
+          <div class="event-date-badge"><span class="day">24</span><span class="month">May</span></div>
+          <span class="event-type-badge">Teens</span>
+        </div>
+        <div class="event-card-body">
+          <span class="event-tag">Ages 14–18</span>
+          <h4>Teen Wellness &amp; Breathwork Day</h4>
+          <p>A one-day experiential workshop for teenagers — teaching stress management, breathwork basics, and
+            mindfulness tools to navigate modern pressures with ease.</p>
+          <div class="event-meta">&#128205; Ahmedabad &nbsp;&bull;&nbsp; &#128336; 9:00 AM &nbsp;&bull;&nbsp; 1 Day
+          </div>
+          <a href="contact.html" class="btn-event">Register &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── SECTION: COMMUNITY & SERVICE EVENTS ── -->
+    <div class="events-section-divider">
+      <h3>&#128149; Community &amp; Service Events</h3>
+    </div>
+    <div class="events-grid-cards">
+
+      <!-- CARD 10: Community Satsang -->
+      <div class="event-card fade-in">
+        <div class="event-card-img" style="background:linear-gradient(135deg,#f0e8d0,#e0d0a8)">
+          <!-- ADD IMAGE: src="event-satsang.jpg" -->
+          <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80" alt="Community Satsang" onerror="this.style.display='none'" />
+          <span class="event-emoji">&#129332;</span>
+          <div class="event-date-badge"><span class="day">25</span><span class="month">May</span></div>
+          <span class="event-type-badge">Community</span>
+        </div>
+        <div class="event-card-body">
+          <span class="event-tag">Community</span>
+          <h4>Monthly Community Satsang</h4>
+          <p>An uplifting evening of group meditation, knowledge sessions, music, and meaningful connection with fellow
+            wellness seekers.</p>
+          <div class="event-meta">&#128205; Ahmedabad &nbsp;&bull;&nbsp; &#128336; 5:00 PM &nbsp;&bull;&nbsp; 2 Hours
+          </div>
+          <a href="contact.html" class="btn-event free">Join Free &rarr;</a>
+        </div>
+      </div>
+
+      <!-- CARD 11: Corporate Wellness -->
+      <div class="event-card fade-in">
+        <div class="event-card-img" style="background:linear-gradient(135deg,#e8e0f8,#d0c0f0)">
+          <!-- ADD IMAGE: src="event-corporate.jpg" -->
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Corporate Wellness" onerror="this.style.display='none'" />
+          <span class="event-emoji">&#127970;</span>
+          <div class="event-date-badge"><span class="day">07</span><span class="month">Jun</span></div>
+          <span class="event-type-badge">Corporate</span>
+        </div>
+        <div class="event-card-body">
+          <span class="event-tag">Corporate</span>
+          <h4>Workplace Wellness Workshop</h4>
+          <p>A customised half-day breathwork and stress management workshop designed for corporate teams — proven to
+            reduce burnout and improve team performance.</p>
+          <div class="event-meta">&#128205; Your Office / Online &nbsp;&bull;&nbsp; &#128336; Half Day</div>
+          <a href="contact.html" class="btn-event">Enquire &rarr;</a>
+        </div>
+      </div>
+
+      <!-- CARD 12: Healthcare Professionals -->
+      <div class="event-card fade-in">
+        <div class="event-card-img" style="background:linear-gradient(135deg,#d0f0f8,#a0d8f0)">
+          <!-- ADD IMAGE: src="event-healthcare.jpg" -->
+          <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=800&q=80" alt="Healthcare Professionals" onerror="this.style.display='none'" />
+          <span class="event-emoji">&#129657;</span>
+          <div class="event-date-badge"><span class="day">14</span><span class="month">Jun</span></div>
+          <span class="event-type-badge">Healthcare</span>
+        </div>
+        <div class="event-card-body">
+          <span class="event-tag">Healthcare</span>
+          <h4>Breathwork for Healthcare Professionals</h4>
+          <p>A dedicated program for doctors, nurses, and caregivers — using SKY Breath and meditation to manage
+            compassion fatigue, reduce burnout, and restore inner balance.</p>
+          <div class="event-meta">&#128205; Ahmedabad &nbsp;&bull;&nbsp; &#128336; Weekend &nbsp;&bull;&nbsp; CME
+            Credits</div>
+          <a href="contact.html" class="btn-event">Register &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RECURRING SESSIONS -->
+  <section class="recurring-sec">
+    <div class="section-header fade-in">
+      <h2>Regular Sessions</h2>
+      <p>Join us every week for these ongoing community sessions. All are welcome.</p>
+    </div>
+    <div class="recurring-grid">
+      <div class="recurring-card fade-in">
+        <div class="recurring-icon">&#129345;</div>
+        <div>
+          <h4>Weekly Intro Talk</h4>
+          <p>Free session every week. Experience meditation and breathwork with certified teachers.</p>
+          <div class="schedule">&#128197; Every Saturday · 10:00 AM – 11:00 AM · Ahmedabad</div>
+        </div>
+      </div>
+      <div class="recurring-card fade-in">
+        <div class="recurring-icon">&#127788;&#65039;</div>
+        <div>
+          <h4>Morning Breathwork Circle</h4>
+          <p>Start your week with a guided breathwork session. Drop-in welcome.</p>
+          <div class="schedule">&#128197; Every Monday · 7:00 AM – 7:45 AM · Online</div>
+        </div>
+      </div>
+      <div class="recurring-card fade-in">
+        <div class="recurring-icon">&#10024;</div>
+        <div>
+          <h4>Group Sahaj Meditation</h4>
+          <p>Weekly group meditation for Sahaj Samadhi practitioners. Deepens your practice.</p>
+          <div class="schedule">&#128197; Every Wednesday · 7:00 PM – 8:00 PM · Ahmedabad</div>
+        </div>
+      </div>
+      <div class="recurring-card fade-in">
+        <div class="recurring-icon">&#127807;</div>
+        <div>
+          <h4>Community Satsang</h4>
+          <p>Monthly community gathering featuring knowledge, music, meditation and connection.</p>
+          <div class="schedule">&#128197; Last Sunday of month · 5:00 PM – 7:00 PM · Ahmedabad</div>
+        </div>
+      </div>
+      <div class="recurring-card fade-in">
+        <div class="recurring-icon">&#127926;</div>
+        <div>
+          <h4>Satsang – Weekly Gathering</h4>
+          <p>Group SKY practice, meditation, and knowledge — refreshing and inspiring.</p>
+          <div class="schedule">&#128197; Every Sunday · 1.5 Hours · Ahmedabad</div>
+        </div>
+      </div>
+      <div class="recurring-card fade-in">
+        <div class="recurring-icon">&#129345;</div>
+        <div>
+          <h4>Kirtan – Monthly Event</h4>
+          <p>Devotional music and chanting. Followed by prasad and community fellowship.</p>
+          <div class="schedule">&#128197; Monthly · 2–3 Hours · Ahmedabad</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="events-cta">
+    <h2>Can't Find the Right Event?</h2>
+    <p>We run programs regularly across Ahmedabad and Gujarat. Contact us to find the next available date or request a
+      private session for your group.</p>
+    <div class="events-cta-btns">
+      <a href="contact.html" class="btn-cta-dark">Contact Us &rarr;</a>
+      <a href="programs.html" class="btn-cta-outline">View All Programs</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo"><img src="./Assets/WhatsApp-Image-2025-01-16-at-07.59.36_f1f82ec6.jpg"
+            alt=""></a>
+        <p>A spiritual wellness community inspired by Art of Living, dedicated to helping you live a stress-free, joyful
+          life.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <ul>
+          <li><a href="programs.html">Intro Talk</a></li>
+          <li><a href="programs.html">Sky Breath Workshop</a></li>
+          <li><a href="programs.html">Sahaj Samadhi</a></li>
+          <li><a href="programs.html">Silent Retreat</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="science.html">Science</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Be Happy Tutorials. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const accountBtn = document.getElementById('accountBtn');
+    const accountDrawer = document.getElementById('accountDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const drawerClose = document.getElementById('drawerClose');
+    function openDrawer() { accountDrawer.classList.add('open'); drawerOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { accountDrawer.classList.remove('open'); drawerOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+    if (accountBtn) accountBtn.addEventListener('click', openDrawer);
+    if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+    if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+    const pg = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.sub-nav-links a').forEach(a => { if (a.getAttribute('href') === pg) a.classList.add('active') });
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        this.closest('.filter-bar').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }) }, { threshold: .08 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  </script>
+</body>
+
+</html>
